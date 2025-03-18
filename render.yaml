@@ -3,7 +3,7 @@ services:
     name: adaptive-backend
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn app:app --timeout 120
     envVars:
       - key: MONGODB_URI
         sync: false
@@ -11,4 +11,8 @@ services:
         generateValue: true
       - key: ENVIRONMENT
         value: production
+      - key: API_KEY  # Added API_KEY environment variable
+        sync: false
+      - key: WEB_CONCURRENCY  # Added worker configuration
+        value: "2"
     healthCheckPath: /api/health

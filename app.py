@@ -1,4 +1,6 @@
 import os
+import sys
+import traceback
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -6,6 +8,15 @@ from backend_ucb_model import UCBTrainer
 from simplified_python_debug_question_bank import question_bank
 import re
 import random
+
+# Configure error logging
+import logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
+logger = logging.getLogger(__name__)
 
 # Configure Gemini API (if available)
 try:
@@ -19,17 +30,31 @@ try:
     load_dotenv()
     # Now you can access the API key
     API_KEY = os.getenv('API_KEY')
-    genai.configure(api_key=API_KEY)
-    model = genai.GenerativeModel("gemini-1.5-flash")
-    GEMINI_AVAILABLE = True
-    print("Gemini AI is available for answer checking")
+    if (API_KEY):
+        genai.configure(api_key=API_KEY)
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        GEMINI_AVAILABLE = True
+        logger.info("Gemini AI is available for answer checking")
+    else:
+        GEMINI_AVAILABLE = False
+        logger.warning("API_KEY not found in environment variables. Gemini AI will not be available.")
 except (ImportError, Exception) as e:
     GEMINI_AVAILABLE = False
-    print(f"Gemini AI not available: {e}")
-    print("Falling back to standard answer checking")
+    logger.warning(f"Gemini AI not available: {e}")
+    logger.info("Falling back to standard answer checking")
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+
+# Add error handlers to prevent the app from shutting down
+@app.errorhandler(Exception)
+def handle_exception(e):
+    logger.error(f"Uncaught exception: {e}")
+    logger.error(traceback.format_exc())
+    return jsonify({
+        "error": "Internal server error",
+        "message": str(e)
+    }), 500
 
 # Initialize the question system as a global variable
 question_system = None
@@ -253,25 +278,47 @@ class DebugQuestionSystem:
 # Add a health check endpoint
 @app.route('/api/health', methods=['GET'])
 def health_check():
-    return jsonify({'status': 'healthy'}), 200
+    try:  # Fixed syntax error: changed curly braces to parentheses
+        # More comprehensive health check
+        env_vars = {
+            "API_KEY_SET": bool(os.getenv('API_KEY')),
+            "PORT": os.getenv('PORT', 'default:5000'),
+            "ENVIRONMENT": os.getenv('ENVIRONMENT', 'development'),
+        }
+
+        return jsonify({
+            'status': 'healthy',
+            'environment': env_vars,
+            'gemini_available': GEMINI_AVAILABLE,
+            'question_system_initialized': question_system is not None
+        }), 200
+    except Exception as e:
+        logger.error(f"Health check failed: {e}")
+        return jsonify({'status': 'degraded', 'error': str(e)}), 500
 
 # API Routes
 @app.route('/api/init', methods=['GET'])
 def initialize_system():
-    global question_system
-    question_system = DebugQuestionSystem()
+    try:
+        global question_system
+        question_system = DebugQuestionSystem()
 
-    # Get total number of questions for each difficulty level
-    total_counts = {
-        "Easy": len(question_system.trainer.questions[0]),
-        "Medium": len(question_system.trainer.questions[1]),
-        "Hard": len(question_system.trainer.questions[2])
-    }
+        # Get total number of questions for each difficulty level
+        total_counts = {
+            "Easy": len(question_system.trainer.questions[0]),
+            "Medium": len(question_system.trainer.questions[1]),
+            "Hard": len(question_system.trainer.questions[2])
+        }
 
-    return jsonify({
-        "status": "initialized",
-        "question_counts": total_counts
-    })
+        logger.info(f"System initialized with {sum(total_counts.values())} total questions")
+        return jsonify({
+            "status": "initialized",
+            "question_counts": total_counts
+        })
+    except Exception as e:
+        logger.error(f"System initialization failed: {e}")
+        logger.error(traceback.format_exc())
+        return jsonify({"error": f"Failed to initialize system: {str(e)}"}), 500
 
 @app.route('/api/question', methods=['GET'])
 def get_next_question():
@@ -321,12 +368,29 @@ def get_stats():
 # Make sure the question system persists across sessions
 @app.before_request
 def ensure_question_system():
-    global question_system
-    if question_system is None:
-        question_system = DebugQuestionSystem()
-        print("Question system initialized before request")
+    try:
+        global question_system
+        if question_system is None:
+            question_system = DebugQuestionSystem()
+            logger.info("Question system initialized before request")
+    except Exception as e:
+        logger.error(f"Failed to initialize question system: {e}")
+        # Don't raise an exception here to allow the request to continue
+
+# This signal handler helps with graceful shutdowns
+def sigterm_handler(signal, frame):
+    logger.info("SIGTERM received, shutting down gracefully")
+    # Cleanup code if needed
+    sys.exit(0)
+
+# Register the signal handler if in production
+if os.environ.get('ENVIRONMENT') == 'production':
+    import signal
+    signal.signal(signal.SIGTERM, sigterm_handler)
 
 # Make sure your app listens on the port provided by Render
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(debug=True, host='0.0.0.0', port=port)
+    app.run(debug=os.environ.get('ENVIRONMENT') != 'production',
+            host='0.0.0.0',
+            port=port)
