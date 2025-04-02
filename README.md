@@ -8,9 +8,7 @@
    - Build Command: `pip install -r requirements.txt`
    - Start Command: `gunicorn app:app`
 4. Add the required environment variables:
-   - `MONGODB_URI`: Your MongoDB connection string
-   - `SECRET_KEY`: A secure random string
-   - `ENVIRONMENT`: Set to `production`
+   - `API_KEY`: Your Gemini API key
 5. Deploy the application
 
 The application will be available at the URL provided by Render once deployment is complete.

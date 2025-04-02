@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 from backend_ucb_model import UCBTrainer
-from simplified_python_debug_question_bank import question_bank
+from python_question_bank import question_bank
 import re
 import random
 
