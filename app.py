@@ -163,10 +163,36 @@ class DebugQuestionSystem:
 
     def format_question(self, question):
         difficulty_names = ["Easy", "Medium", "Hard"]
+
+        # Extract hints from question bank
+        question_data = None
+        for difficulty, questions in question_bank.items():
+            for q in questions:
+                if q["id"] == question.id:
+                    question_data = q
+                    break
+            if question_data:
+                break
+
+        # Include hints if available
+        hints = []
+        if question_data and "hints" in question_data:
+            if isinstance(question_data["hints"], dict):
+                # If hints are stored as a dictionary with levels
+                hints = [
+                    question_data["hints"].get("level1", ""),
+                    question_data["hints"].get("level2", ""),
+                    question_data["hints"].get("level3", "")
+                ]
+            elif isinstance(question_data["hints"], list):
+                # If hints are stored as a list
+                hints = question_data["hints"]
+
         return {
             "difficulty": difficulty_names[question.difficulty],
             "id": question.id,
-            "text": question.text
+            "text": question.text,
+            "hints": hints  # Add hints to the response
         }
 
     def check_answer(self, user_answer):
