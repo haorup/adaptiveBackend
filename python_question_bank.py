@@ -679,23 +679,23 @@ print("Total with tax: $" + total)
 # ====================== Operator Precedence Problems ======================
 
 # --- Easy level operator precedence problems ---
-question_bank[0].extend([
-    {
-        "id": "operator_easy1",
-        "category": "OperatorPrecedence",
-        "text": """# Simple Operator Precedence (Easy)
-result = 5 + 2 * 3
-print(result)
-# Expected Output: 11""",
-        "answer": """result = 5 + (2 * 3)""",
-        "hints": {
-            "level1": "Check operator precedence.",
-            "level2": "What is the natural order of operations in Python for addition and multiplication?",
-            "level3": "Multiplication is performed before addition in Python's operator precedence rules. Using parentheses can clarify the intended order of operations."
-        },
-        "knowledge_point": "Basic operator precedence rules"
-    }
-])
+# question_bank[0].extend([
+#     {
+#         "id": "operator_easy1",
+#         "category": "OperatorPrecedence",
+#         "text": """# Simple Operator Precedence (Easy)
+# result = 5 + 2 * 3
+# print(result)
+# # Expected Output: 11""",
+#         "answer": """result = 5 + (2 * 3)""",
+#         "hints": {
+#             "level1": "Check operator precedence.",
+#             "level2": "What is the natural order of operations in Python for addition and multiplication?",
+#             "level3": "Multiplication is performed before addition in Python's operator precedence rules. Using parentheses can clarify the intended order of operations."
+#         },
+#         "knowledge_point": "Basic operator precedence rules"
+#     }
+# ])
 
 # --- Medium level operator precedence problems ---
 question_bank[1].extend([
@@ -1253,24 +1253,24 @@ def process_multiple_files(input_files, output_file):
 
 # --- Easy level function problems ---
 question_bank[0].extend([
-    {
-        "id": "function_easy1",
-        "category": "Function",
-        "text": """# Problem: Basic function definition
-def calculate_average(numbers)  # Error: Missing colon
-    total = sum(numbers)
-    return total/len(numbers)
+#     {
+#         "id": "function_easy1",
+#         "category": "Function",
+#         "text": """# Problem: Basic function definition
+# def calculate_average(numbers)  # Error: Missing colon
+#     total = sum(numbers)
+#     return total/len(numbers)
 
-# Test Input: [1, 2, 3, 4, 5]
-# Expected Output: 3.0""",
-        "answer": """def calculate_average(numbers):""",
-        "hints": {
-            "level1": "Check function definition syntax.",
-            "level2": "What punctuation does a function definition in Python require at the end of its header?",
-            "level3": "Every Python function definition must end with a colon, indicating the start of the function body. Omitting the colon results in a SyntaxError."
-        },
-        "knowledge_point": "Function definition syntax"
-    },
+# # Test Input: [1, 2, 3, 4, 5]
+# # Expected Output: 3.0""",
+#         "answer": """def calculate_average(numbers):""",
+#         "hints": {
+#             "level1": "Check function definition syntax.",
+#             "level2": "What punctuation does a function definition in Python require at the end of its header?",
+#             "level3": "Every Python function definition must end with a colon, indicating the start of the function body. Omitting the colon results in a SyntaxError."
+#         },
+#         "knowledge_point": "Function definition syntax"
+#     },
     {
         "id": "function_easy2",
         "category": "Function",
