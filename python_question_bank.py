@@ -25,7 +25,7 @@ question_bank[0].extend([
         "text": """# Problem: Basic function definition and call syntax
 def calculate(x, y)  # Error: Missing colon
     return x + y
-    
+
 result = calculate(5, 3)
 print(result)
 
@@ -154,7 +154,7 @@ question_bank[0].extend([
 def count_up_to(n):
     for i in range(n):  # Error: Wrong range
         print(i)
-        
+
 # Test Input: n = 5
 # Expected Output: 1 2 3 4 5
 # Actual Output: 0 1 2 3 4""",
@@ -175,7 +175,7 @@ def print_even_numbers(n):
     while i <= n:  # Error: Condition causes printing of 0
         print(i)
         i += 2
-        
+
 # Test Input: n = 6
 # Expected Output: 2 4 6
 # Actual Output: 0 2 4 6""",
@@ -227,7 +227,7 @@ def print_triangle(n):
 # ***
 # ****
 # Actual Output:
-# 
+#
 # *
 # **
 # ***""",
@@ -249,7 +249,7 @@ def find_first_multiple(numbers, factor):
         if num % factor:  # Error: Wrong condition for finding multiple
             found = num
             break
-            
+
     return found if found else "No multiple found"
 
 # Test Input: numbers = [1, 3, 5, 6, 7, 8], factor = 3
@@ -294,14 +294,14 @@ question_bank[2].extend([
 def process_matrix(matrix):
     rows = len(matrix)
     result = []
-    
+
     for i in range(rows):
         for j in range(rows):  # Error 1: Should use len(matrix[i])
             sum = 0
             for k in range(j):  # Error 2: Wrong range for summation
                 sum += matrix[i][k]
         result.append(sum)  # Error 3: Wrong indentation
-        
+
     return result
 
 # Test Input: matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -322,7 +322,7 @@ def find_sequence(numbers):
     length = len(numbers)
     current_seq = 1
     max_seq = 1
-    
+
     i = 0
     while i < length - 1:  # Error 1: Wrong range
         while numbers[i+1] = numbers[i] + 1:  # Error 2: Assignment instead of comparison
@@ -331,7 +331,7 @@ def find_sequence(numbers):
         if current_seq > max_seq
             max_seq = current_seq  # Error 3: Missing colon in if statement
         current_seq = 1
-        
+
     return max_seq
 
 # Test Input: numbers = [1, 2, 3, 5, 6, 7, 8, 10]
@@ -391,7 +391,7 @@ print(text.Capital())  # Error: Incorrect method name
         "text": """# Problem: String concatenation
 first = "Hello"
 last = "World"
-message = first + " " + last  # Error: Missing space between strings
+message = first + last  # Error: Missing space between strings
 
 # Expected Output: Hello World""",
         "answer": """message = first + " " + last""",
@@ -507,7 +507,7 @@ def find_first_passing(student_data):
             break
     return passing_student
 
-# Test Input: 
+# Test Input:
 students = {
     'John': {'math': 55, 'english': 65, 'science': 70},
     'Alice': {'math': 40, 'english': 50, 'science': 45},
@@ -530,13 +530,13 @@ students = {
 def update_inventory(inventory, sales_records):
     i = 0
     updated_items = {}
-    
+
     while i < len(sales_records)  # Error 1: Missing colon
         product, quantity = sales_records[i]  # Tuple unpacking
         if product in inventory.keys  # Error 2: Missing parentheses
             updated_items[product] = inventory[product] - quantity
         i += 1  # Error 3: Increment in wrong position
-    
+
     return updated_items
 
 # Test Input:
@@ -858,14 +858,14 @@ def process_data(data_list):
         for item in data_list:
             if not isinstance(item, dict):  # Error 1: Wrong type check
                 continue
-            
+
             if item.get('status') = 'active':  # Error 2: Assignment instead of comparison
                 if item.get('value', 0) > 100
                     results.append(item)  # Error 3: Missing colon
-            
+
     except TypeError as e:
         return f"Error processing data: {str(e)}"
-    
+
     return sorted(results, key=lambda x: x['value'])
 
 # Test Input: [
@@ -893,19 +893,19 @@ def process_data(data_list):
 def process_workflow(tasks):
     current_state = 'START'
     processed = []
-    
+
     while tasks:
         task = tasks.pop[0]  # Error 1: Wrong method syntax
-        
+
         if current_state in 'START':  # Error 2: Incorrect string comparison
             next_state = task.get('type', 'INVALID')
         elif current_state == 'PROCESSING'
             if task['status'] = 'complete':  # Error 3: Assignment instead of comparison
                 next_state = 'COMPLETED'
                 processed.append(task)
-            
+
         current_state = next_state
-    
+
     return processed
 
 # Test Input: [
@@ -1041,7 +1041,7 @@ question_bank[2].extend([
 class DatabaseError(Exception)  # Error 1: Missing colon
     pass
 
-class ConnectionError(DatabaseError):  
+class ConnectionError(DatabaseError):
     def __init__(self, message)  # Error 2: Missing colon
         super().__init__(message)
 
@@ -1202,7 +1202,7 @@ def process_binary_file(filename):
         with open(filename, 'rb') as file  # Error 1: Missing colon
             header = file.read(4)  # Error 2: Not converting bytes to int
             size = int.from_bytes(header)  # Error 3: Wrong bytes to int conversion
-            
+
             data = file.read(size)
             return process_data(data)
     except IOError as e:
@@ -1227,7 +1227,7 @@ import fcntl
 
 def process_multiple_files(input_files, output_file):
     output = open(output_file, 'w')  # Error 1: No context management
-    
+
     for file in input_files
         try:  # Error 2: Missing colon
             with open(file, 'r') as f:
@@ -1347,10 +1347,10 @@ def process_data(data_list):
         for item in data_list
             if not isinstance(item, (int, float))  # Error 1: Missing colon
                 continue
-            
+
             value = item * 2,5  # Error 2: Invalid number format
             results.append(value)  # Error 3: Using append on dictionary
-            
+
         return results
     except TypeError as e:
         return None
@@ -1467,7 +1467,7 @@ def process_matrix(matrix):
     return flattened, row_sums
 
 # Test Input: [[1, -2, 3], [-4, 5, 6], [7, 8, -9]]
-# Expected Output: 
+# Expected Output:
 # Flattened: [1, 3, 5, 6, 7, 8]
 # Row sums: [2, 7, 6]""",
         "answer": """row_sums = [sum(row) for row in matrix]""",
@@ -1493,7 +1493,7 @@ def process_student_scores(student_data):
     averages = [sum(scores) / len(scores) for scores in scores.items()]
     # Error 3: Incorrect sorting syntax
     ranked_students = sorted(averages, key=lambda x: x[1], reversed=True)
-    
+
     return ranked_students[:3]  # Return top 3 students
 
 # Test Input: [
@@ -1525,7 +1525,7 @@ def custom_sort_and_group(items):
     return result
 
 # Test Input: [
-#     {'type': 'A', 'value': 1}, 
+#     {'type': 'A', 'value': 1},
 #     {'type': 'B', 'value': 2},
 #     {'type': 'A', 'value': 3},
 #     {'type': 'B', 'value': 4}
