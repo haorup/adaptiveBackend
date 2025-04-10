@@ -126,6 +126,8 @@ class DebugQuestionSystem:
         self.current_difficulty = 0  # Start with Easy
         self.consecutive_correct = 0
         self.consecutive_wrong = 0
+        # Add a counter for wrong attempts on the current question
+        self.current_question_wrong_attempts = 0
 
         # Track used question IDs
         self.used_questions = set()
@@ -158,6 +160,9 @@ class DebugQuestionSystem:
 
         # Add to used questions set
         self.used_questions.add(question.id)
+
+        # Reset wrong attempts counter when getting a new question
+        self.current_question_wrong_attempts = 0
 
         return self.format_question(question)
 
@@ -197,7 +202,7 @@ class DebugQuestionSystem:
 
     def check_answer(self, user_answer):
         if not self.current_question:
-            return False
+            return False, False
 
         # First try Gemini-based checking if available
         if GEMINI_AVAILABLE:
@@ -223,6 +228,8 @@ class DebugQuestionSystem:
         if is_correct:
             self.consecutive_correct += 1
             self.consecutive_wrong = 0
+            # Reset wrong attempts counter on correct answer
+            self.current_question_wrong_attempts = 0
             # Update UCB model state
             self.trainer.agent.update(self.current_difficulty, 1.0)
 
@@ -235,6 +242,8 @@ class DebugQuestionSystem:
         else:
             self.consecutive_wrong += 1
             self.consecutive_correct = 0
+            # Increment wrong attempts counter
+            self.current_question_wrong_attempts += 1
             # Update UCB model state
             self.trainer.agent.update(self.current_difficulty, 0.0)
 
@@ -245,7 +254,14 @@ class DebugQuestionSystem:
                 print(
                     f"\nDifficulty downgraded from {['Easy', 'Medium', 'Hard'][old_difficulty]} to {['Easy', 'Medium', 'Hard'][self.current_difficulty]}")
 
-        return is_correct
+            # Check if wrong attempts threshold is reached
+            if self.current_question_wrong_attempts >= 3:
+                print("\nYou've attempted this question 3 times without success. Moving to the next question...")
+                # Return a flag to indicate we should move to the next question
+                return is_correct, True
+
+        # Default return with the correct/incorrect status and no question change flag
+        return is_correct, False
 
     def traditional_check(self, user_answer):
         """Traditional string-based answer checking as fallback"""
@@ -258,12 +274,10 @@ class DebugQuestionSystem:
             "user_lines": user_lines,
             "correct_lines": correct_lines
         }
-
         print("\nUser answer normalized lines:", user_lines)
         print("\nCorrect answer normalized lines:", correct_lines)
 
         # Try different matching strategies
-
         # 1. Check if all lines in correct answer exist in user's answer
         all_lines_present = all(line in user_lines for line in correct_lines)
 
@@ -273,7 +287,6 @@ class DebugQuestionSystem:
                 if all(user_lines[i + j] == correct_lines[j] for j in range(len(correct_lines))):
                     return True
             return False
-
         sequence_match = len(correct_lines) <= len(user_lines) and check_sequence()
 
         # 3. Check if the answer contains the key line(s) that fix the problem
@@ -281,10 +294,8 @@ class DebugQuestionSystem:
 
         # Consider it correct if any of the strategies finds a match
         is_correct = all_lines_present or sequence_match or key_line_match
-
         print(f"\nMatch details - All lines present: {all_lines_present}, Sequence match: {sequence_match}, Key line match: {key_line_match}")
         print(f"\nString match result: {'Correct' if is_correct else 'Incorrect'}")
-
         return is_correct
 
     def get_next_difficulty(self):
@@ -304,14 +315,13 @@ class DebugQuestionSystem:
 # Add a health check endpoint
 @app.route('/api/health', methods=['GET'])
 def health_check():
-    try:  # Fixed syntax error: changed curly braces to parentheses
+    try:
         # More comprehensive health check
         env_vars = {
             "API_KEY_SET": bool(os.getenv('API_KEY')),
             "PORT": os.getenv('PORT', 'default:5000'),
             "ENVIRONMENT": os.getenv('ENVIRONMENT', 'development'),
         }
-
         return jsonify({
             'status': 'healthy',
             'environment': env_vars,
@@ -328,14 +338,12 @@ def initialize_system():
     try:
         global question_system
         question_system = DebugQuestionSystem()
-
         # Get total number of questions for each difficulty level
         total_counts = {
             "Easy": len(question_system.trainer.questions[0]),
             "Medium": len(question_system.trainer.questions[1]),
             "Hard": len(question_system.trainer.questions[2])
         }
-
         logger.info(f"System initialized with {sum(total_counts.values())} total questions")
         return jsonify({
             "status": "initialized",
@@ -350,7 +358,6 @@ def initialize_system():
 def get_next_question():
     if not question_system:
         return jsonify({"error": "System not initialized"}), 400
-
     question_data = question_system.get_next_question()
     return jsonify(question_data)
 
@@ -368,7 +375,8 @@ def check_answer():
     # Debug log to see what's being submitted
     print(f"\n--- Answer submission ---\nUser answer: {user_answer}\n")
 
-    is_correct = question_system.check_answer(user_answer)
+    # Get both the correctness result and the auto-next flag
+    is_correct, should_next_question = question_system.check_answer(user_answer)
 
     # Debug log to confirm the result
     print(f"Is correct: {is_correct} (type: {type(is_correct)})")
@@ -381,7 +389,9 @@ def check_answer():
         "consecutive_correct": question_system.consecutive_correct,
         "consecutive_wrong": question_system.consecutive_wrong,
         "next_difficulty": difficulty_names[next_difficulty],
-        "stats": question_system.get_stats()
+        "stats": question_system.get_stats(),
+        # Add a new field to indicate if the frontend should automatically fetch a new question
+        "auto_next": should_next_question
     })
 
 @app.route('/api/stats', methods=['GET'])

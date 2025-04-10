@@ -23,7 +23,7 @@ question_bank[0].extend([
         "id": "syntax_easy1",
         "category": "Syntax",
         "text": """# Problem: Basic function definition and call syntax
-def calculate(x, y)  # Error: Missing colon
+def calculate(x, y)  # This line has a problem
     return x + y
 
 result = calculate(5, 3)
@@ -43,7 +43,7 @@ print(result)
         "category": "Syntax",
         "text": """# Problem: Basic if-statement syntax
 number = 10
-if number > 5  # Error: Missing colon
+if number > 5  # This line has a problem
     print("Number is greater than 5")
 
 # Expected Output: Number is greater than 5""",
@@ -63,8 +63,8 @@ question_bank[1].extend([
         "id": "syntax_medium1",
         "category": "Syntax",
         "text": """# Problem: Function definition with default parameters
-def process_data(data, options)  # Error: Missing colon
-    if type(data) != list:  # Error: Non-Pythonic type checking
+def process_data(data, options)  # This line has a problem
+    if type(data) != list:
         raise TypeError("Data must be a list")
     return [x * 2 for x in data]
 
@@ -82,10 +82,10 @@ def process_data(data, options)  # Error: Missing colon
         "category": "Syntax",
         "text": """# Problem: Try-except block syntax
 def divide_numbers(a, b):
-    try  # Error: Missing colon
+    try  #This line has a problem
         result = a / b
         return result
-    except ZeroDivisionError  # Error: Missing colon
+    except ZeroDivisionError
         print("Cannot divide by zero")
         return None
 
@@ -106,9 +106,9 @@ question_bank[2].extend([
         "id": "syntax_hard1",
         "category": "Syntax",
         "text": """# Problem: Class definition with inheritance
-class DataProcessor(BaseProcessor)  # Error 1: Missing colon
-    def __init__(self, data)  # Error 2: Missing colon
-        self.data = self.process(data)  # Error 3: Method called before definition
+class DataProcessor(BaseProcessor)  # This line has a problem
+    def __init__(self, data):
+        self.data = self.process(data)
 
     def process():  # Error: Missing self parameter
         return sorted(self.data)
@@ -126,9 +126,9 @@ class DataProcessor(BaseProcessor)  # Error 1: Missing colon
         "id": "syntax_hard2",
         "category": "Syntax",
         "text": """# Problem: Decorator function syntax
-def validate_input  # Error 1: Missing parentheses and colon
-    def decorator(func)  # Error 2: Missing colon
-        def wrapper(*args, **kwargs)  # Error 3: Missing colon
+def validate_input  # This line has a problem
+    def decorator(func):
+        def wrapper(*args, **kwargs):
             if len(args) == 0:
                 raise ValueError("No arguments provided")
             return func(*args, **kwargs)
@@ -152,7 +152,7 @@ question_bank[0].extend([
         "category": "Loop",
         "text": """# Problem: Basic for loop counter
 def count_up_to(n):
-    for i in range(n):  # Error: Wrong range
+    for i in range(n):  # This line has a problem
         print(i)
 
 # Test Input: n = 5
@@ -171,8 +171,8 @@ def count_up_to(n):
         "category": "Loop",
         "text": """# Problem: Simple while loop
 def print_even_numbers(n):
-    i = 0
-    while i <= n:  # Error: Condition causes printing of 0
+    i = 0 # This line has a problem
+    while i <= n:
         print(i)
         i += 2
 
@@ -193,7 +193,7 @@ def print_even_numbers(n):
         "text": """# Simple Loop Control (Easy)
 counter = 1
 total = 0
-while counter < 5:    # Error
+while counter < 5:    # This line has a problem
     total += counter
 print(total)
 # Expected output: 15
@@ -216,9 +216,9 @@ question_bank[1].extend([
         "text": """# Problem: Nested loop with pattern
 def print_triangle(n):
     for i in range(n):
-        for j in range(i):  # Error: Wrong range for pattern
+        for j in range(i):  # This line has a problem
             print('*', end='')
-        print()  # New line after each row
+        print()
 
 # Test Input: n = 4
 # Expected Output:
@@ -246,7 +246,7 @@ def print_triangle(n):
 def find_first_multiple(numbers, factor):
     found = None
     for num in numbers:
-        if num % factor:  # Error: Wrong condition for finding multiple
+        if num % factor:  # This line has a problem
             found = num
             break
 
@@ -270,7 +270,7 @@ def find_first_multiple(numbers, factor):
 target = 10
 count = 0
 num = 1
-while num < target:    # Error
+while num < target:    # This line has a problem
     num += 2
     count += 1
 print(count)
@@ -287,33 +287,7 @@ print(count)
 
 # --- Hard level loop problems ---
 question_bank[2].extend([
-    {
-        "id": "loop_hard1",
-        "category": "Loop",
-        "text": """# Problem: Complex nested loops with matrix
-def process_matrix(matrix):
-    rows = len(matrix)
-    result = []
 
-    for i in range(rows):
-        for j in range(rows):  # Error 1: Should use len(matrix[i])
-            sum = 0
-            for k in range(j):  # Error 2: Wrong range for summation
-                sum += matrix[i][k]
-        result.append(sum)  # Error 3: Wrong indentation
-
-    return result
-
-# Test Input: matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-# Expected Output: [0, 1, 3, 0, 4, 9, 0, 7, 15]""",
-        "answer": """for j in range(len(matrix[i])):""",
-        "hints": {
-            "level1": "Review the nested loop indices.",
-            "level2": "What change in the range of the inner loop will correctly iterate through each element in the matrix row?",
-            "level3": "Instead of using range(rows), the inner loop should iterate with range(len(matrix[i])) to correctly access each element in the current row. Also, indentation must be adjusted for summation accumulation."
-        },
-        "knowledge_point": "Matrix traversal and nested loops"
-    },
     {
         "id": "loop_hard2",
         "category": "Loop",
@@ -324,12 +298,12 @@ def find_sequence(numbers):
     max_seq = 1
 
     i = 0
-    while i < length - 1:  # Error 1: Wrong range
-        while numbers[i+1] = numbers[i] + 1:  # Error 2: Assignment instead of comparison
+    while i < length - 1:
+        while numbers[i+1] = numbers[i] + 1:  # This line has a problem
             current_seq += 1
             i += 1
         if current_seq > max_seq
-            max_seq = current_seq  # Error 3: Missing colon in if statement
+            max_seq = current_seq:
         current_seq = 1
 
     return max_seq
@@ -351,7 +325,7 @@ def find_sequence(numbers):
 def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
-        for j in range(n-i): # Error
+        for j in range(n-i): # This line has a problem
             if arr[j] > arr[j+1]:
                 arr[j], arr[j+1] = arr[j+1], arr[j]
     return arr""",
@@ -374,7 +348,7 @@ question_bank[0].extend([
         "category": "String",
         "text": """# Problem: Basic string methods
 text = "hello world"
-print(text.Capital())  # Error: Incorrect method name
+print(text.Capital())  # This line has a problem: Incorrect method name
 
 # Expected Output: Hello World""",
         "answer": """print(text.title())""",
@@ -391,7 +365,7 @@ print(text.Capital())  # Error: Incorrect method name
         "text": """# Problem: String concatenation
 first = "Hello"
 last = "World"
-message = first + last  # Error: Missing space between strings
+message = first + last   # This line has a problem
 
 # Expected Output: Hello World""",
         "answer": """message = first + " " + last""",
@@ -411,7 +385,7 @@ question_bank[1].extend([
         "category": "String",
         "text": """# Problem: String formatting with multiple variables
 def format_user_info(name, age, city):
-    info = "Name: %s, Age: %d, City: %s" % name, age, city  # Error: Incorrect tuple formatting
+    info = "Name: %s, Age: %d, City: %s" % name, age, city  # This line has a problem: Incorrect tuple formatting
     return info.capitalize
 
 # Expected Output: Name: John, Age: 25, City: New York""",
@@ -429,8 +403,8 @@ def format_user_info(name, age, city):
         "text": """# Problem: String slicing and methods
 def clean_and_extract(text):
     words = text.split()  # Error: No splitting character specified
-    first_word = words[0].strip('.,!?')  # Error: Incomplete punctuation list
-    return first_word.lower
+    first_word = words[0].strip('.,!?')
+    return first_word.lower # This line has a problem
 
 # Expected Output: hello (for input text: "Hello, World!")""",
         "answer": """return first_word.lower()""",
@@ -450,11 +424,8 @@ question_bank[2].extend([
         "category": "String",
         "text": """# Problem: Complex string processing
 def process_name_list(names):
-    # Error 1: Incorrect join method usage
-    formatted_names = " ".join(name.strip.capitalize for name in names)
-    # Error 2: Wrong method chaining
+    formatted_names = " ".join(name.strip.capitalize for name in names) # This line has a problem
     unique_names = set(formatted_names.split).sort()
-    # Error 3: Incorrect list comprehension syntax
     return [name for name in unique_names if len(name) > 3]
 
 # Test input: ["john ", " jane", "bob  ", "ALICE"]
@@ -472,11 +443,9 @@ def process_name_list(names):
         "category": "String",
         "text": """# Problem: Advanced string formatting and validation
 def format_phone_number(number):
-    # Error 1: Incorrect string method usage
+    # # This line has a problem
     cleaned = number.removeall('-').removeall(' ')
-    # Error 2: Wrong string slicing syntax
     area_code = cleaned[0:3:]
-    # Error 3: Missing format specifiers
     return f"({area_code}) {cleaned[3:6]}-{cleaned[7:]}"
 
 # Test input: "123-456-7890"
@@ -500,8 +469,8 @@ question_bank[1].extend([
         "text": """# Problem: Process student scores until passing score found
 def find_first_passing(student_data):
     passing_student = None
-    for name, scores in student_data:  # Error: Wrong dict iteration
-        avg = sum(scores.values) / len(scores)  # Error: Missing parentheses
+    for name, scores in student_data:  # # This line has a problem: Wrong dict iteration
+        avg = sum(scores.values) / len(scores)
         if avg >= 60:
             passing_student = (name, avg)
             break
@@ -531,11 +500,11 @@ def update_inventory(inventory, sales_records):
     i = 0
     updated_items = {}
 
-    while i < len(sales_records)  # Error 1: Missing colon
-        product, quantity = sales_records[i]  # Tuple unpacking
-        if product in inventory.keys  # Error 2: Missing parentheses
+    while i < len(sales_records)  # This line has a problem
+        product, quantity = sales_records[i]
+        if product in inventory.keys
             updated_items[product] = inventory[product] - quantity
-        i += 1  # Error 3: Increment in wrong position
+        i += 1
 
     return updated_items
 
@@ -560,10 +529,10 @@ def find_pairs(matrix, target):
     pairs = []
     for i in range(len(matrix)):
         j = 0
-        while j < len(matrix[i])  # Error 1: Missing colon
-            if matrix[i][j] + matrix[i][j+1] == target  # Error 2: Missing colon
+        while j < len(matrix[i])  # This line has a problem
+            if matrix[i][j] + matrix[i][j+1] == target:
                 pairs.append((matrix[i][j], matrix[i][j+1]))
-                break  # Error 3: Break in wrong position
+                break
             j += 1
     return pairs
 
@@ -594,7 +563,7 @@ question_bank[0].extend([
         "category": "Basic",
         "text": """# String Operations (Easy)
 message = "hello world"
-print(message.upper) # Missing parentheses for method call
+print(message.upper) # This line has a problem
 # Expected Output: HELLO WORLD""",
         "answer": """print(message.upper())""",
         "hints": {
@@ -610,7 +579,7 @@ print(message.upper) # Missing parentheses for method call
         "text": """# Variable Name and Type Conversion (Medium)
 name = "Alice"
 age = 30
-print("Name: " + name + ", Age: " + age)
+print("Name: " + name + ", Age: " + age) # This line has a problem
 # Expected Output: Name: Alice, Age: 30""",
         "answer": """print("Name: " + name + ", Age: " + str(age))""",
         "hints": {
@@ -624,7 +593,7 @@ print("Name: " + name + ", Age: " + age)
         "id": "basic_easy3",
         "category": "Basic",
         "text": """# Simple Input Processing (Easy)
-age = input("Enter your age: ")
+age = input("Enter your age: ") # This line has a problem
 print("Age: " + age + 1)
 # Expected Output: Age: 21 (assuming user enters 20)""",
         "answer": """age = int(input("Enter your age: "))""",
@@ -646,7 +615,7 @@ question_bank[1].extend([
         "text": """# Data Type Conversion (Medium)
 num_str = "123"
 num_int = int(num_str)
-print(num_str + 1)
+print(num_str + 1) # This line has a problem
 # Expected Output: 124""",
         "answer": """print(int(num_str) + 1)""",
         "hints": {
@@ -656,46 +625,29 @@ print(num_str + 1)
         },
         "knowledge_point": "Type conversion and numeric operations"
     },
-    {
-        "id": "typeconv_medium2",
-        "category": "TypeConversion",
-        "text": """# Complex Type Conversion (Hard)
-price_str = "25.99"
-quantity = 3
-tax_rate = "0.08"
-total = price_str * quantity * (1 + tax_rate)
-print("Total with tax: $" + total)
-# Expected Output: Total with tax: $84.21""",
-        "answer": """price_float = float(price_str)""",
-        "hints": {
-            "level1": "Review numeric type conversion.",
-            "level2": "What conversions are needed to correctly perform arithmetic on strings representing numbers?",
-            "level3": "Convert price and tax rate from strings to float to ensure accurate multiplication and addition during calculation."
-        },
-        "knowledge_point": "Mixed type conversion and calculations"
-    }
+
 ])
 
 # ====================== Operator Precedence Problems ======================
 
 # --- Easy level operator precedence problems ---
-# question_bank[0].extend([
-#     {
-#         "id": "operator_easy1",
-#         "category": "OperatorPrecedence",
-#         "text": """# Simple Operator Precedence (Easy)
-# result = 5 + 2 * 3
-# print(result)
-# # Expected Output: 11""",
-#         "answer": """result = 5 + (2 * 3)""",
-#         "hints": {
-#             "level1": "Check operator precedence.",
-#             "level2": "What is the natural order of operations in Python for addition and multiplication?",
-#             "level3": "Multiplication is performed before addition in Python's operator precedence rules. Using parentheses can clarify the intended order of operations."
-#         },
-#         "knowledge_point": "Basic operator precedence rules"
-#     }
-# ])
+question_bank[0].extend([
+    {
+        "id": "operator_easy1",
+        "category": "OperatorPrecedence",
+        "text": """# Simple Operator Precedence (Easy)
+result = 5 + 2 * 3 # This line has a problem
+print(result)
+# Expected Output: 21""",
+        "answer": """result = (5 + 2) * 3""",
+        "hints": {
+            "level1": "Check operator precedence.",
+            "level2": "What is the natural order of operations in Python for addition and multiplication?",
+            "level3": "Multiplication is performed before addition in Python's operator precedence rules. Using parentheses can clarify the intended order of operations."
+        },
+        "knowledge_point": "Basic operator precedence rules"
+    }
+])
 
 # --- Medium level operator precedence problems ---
 question_bank[1].extend([
@@ -706,7 +658,7 @@ question_bank[1].extend([
 x = 10
 y = 5
 z = 2
-result = x + y * z ** 2
+result = x + y * z ** 2 # This line has a problem
 print(result)
 # Expected Output: 30""",
         "answer": """result = x + (y * (z ** 2))""",
@@ -728,7 +680,7 @@ question_bank[2].extend([
 a = "5"
 b = 2
 c = "3"
-result = a + b * c
+result = a + b * c # This line has a problem
 # Expected Output: 11 (as integer)""",
         "answer": """result = int(a) + (b * int(c))""",
         "hints": {
@@ -751,7 +703,7 @@ question_bank[0].extend([
 def check_score(score):
     if score >= 90:
         print("A")
-    if score >= 80:  # Error: Using if instead of elif
+    if score >= 80:  # This line has a problem
         print("B")
     if score >= 70:
         print("C")
@@ -776,7 +728,7 @@ def check_score(score):
 def sum_even_numbers(numbers):
     total = 0
     for num in numbers:
-        if num % 2:  # Error: Wrong condition for even numbers
+        if num % 2:  # This line has a problem
             total += num
     return total
 
@@ -795,29 +747,7 @@ def sum_even_numbers(numbers):
 
 # --- Medium level control flow problems ---
 question_bank[1].extend([
-    {
-        "id": "controlflow_medium1",
-        "category": "ControlFlow",
-        "text": """# Problem: Nested loop with break
-def find_first_duplicate(numbers):
-    for i in range(len(numbers)):
-        for j in range(i+1, len(numbers)):
-            if numbers[i] == numbers[j]:
-                break  # Error: Break only exits inner loop
-        return numbers[i]  # Error: Return should be after duplicate found
-    return None
 
-# Test Input: [1, 2, 3, 2, 4, 1]
-# Expected Output: 2
-# Actual Output: 1""",
-        "answer": """return numbers[i]  # Moving this line inside the inner loop after the if condition""",
-        "hints": {
-            "level1": "Review loop structure and placement of return.",
-            "level2": "How does the placement of the return statement affect the outcome of the nested loops?",
-            "level3": "The return statement should be placed only after a duplicate is found within the inner loop, ensuring the function does not exit prematurely."
-        },
-        "knowledge_point": "Break statement scope and return placement"
-    },
     {
         "id": "controlflow_medium2",
         "category": "ControlFlow",
@@ -826,7 +756,7 @@ def divide_and_convert(a, b):
     try:
         result = a / b
         return int(result)
-    except:  # Error: Too broad exception clause
+    except:  # This line has a problem: Too broad exception clause
         return "Error"
 
 # Test Input 1: a=5, b=0
@@ -856,12 +786,12 @@ def process_data(data_list):
     results = []
     try:
         for item in data_list:
-            if not isinstance(item, dict):  # Error 1: Wrong type check
+            if not isinstance(item, dict):
                 continue
 
-            if item.get('status') = 'active':  # Error 2: Assignment instead of comparison
+            if item.get('status') = 'active':  # This line has a problem
                 if item.get('value', 0) > 100
-                    results.append(item)  # Error 3: Missing colon
+                    results.append(item):
 
     except TypeError as e:
         return f"Error processing data: {str(e)}"
@@ -895,12 +825,12 @@ def process_workflow(tasks):
     processed = []
 
     while tasks:
-        task = tasks.pop[0]  # Error 1: Wrong method syntax
+        task = tasks.pop[0]  # This line has a problem
 
-        if current_state in 'START':  # Error 2: Incorrect string comparison
+        if current_state in 'START':
             next_state = task.get('type', 'INVALID')
         elif current_state == 'PROCESSING'
-            if task['status'] = 'complete':  # Error 3: Assignment instead of comparison
+            if task['status'] = 'complete':
                 next_state = 'COMPLETED'
                 processed.append(task)
 
@@ -928,29 +858,7 @@ def process_workflow(tasks):
 
 # --- Easy level exception handling problems ---
 question_bank[0].extend([
-    {
-        "id": "exception_easy1",
-        "category": "Exception",
-        "text": """# Problem: Basic exception handling
-def divide_numbers(a, b):
-    try:
-        result = a / b
-    except:  # Error: Too broad exception clause
-        print("Error occurred")
-    return result
 
-# Test Input: a=10, b=0
-# Expected Output: "Division by zero error\"""",
-        "answer": """except ZeroDivisionError:
-        print("Division by zero error")
-        return None""",
-        "hints": {
-            "level1": "Review exception clauses.",
-            "level2": "What is the advantage of specifying the exception type rather than using a bare except?",
-            "level3": "Specifying an exception type like ZeroDivisionError ensures that only expected errors are caught, leading to better error management and debugging."
-        },
-        "knowledge_point": "Specific exception handling"
-    },
     {
         "id": "exception_easy2",
         "category": "Exception",
@@ -959,7 +867,7 @@ def convert_to_int(text):
     try:
         number = int(text)
         return number
-    except ValueError as:  # Error: Missing exception variable name
+    except ValueError as:  #This line has a problem
         print("Conversion failed")
         return None
 
@@ -977,34 +885,7 @@ def convert_to_int(text):
 
 # --- Medium level exception handling problems ---
 question_bank[1].extend([
-    {
-        "id": "exception_medium1",
-        "category": "Exception",
-        "text": """# Problem: Multiple exception handling
-def process_data(data):
-    try:
-        if type(data) is not list:
-            raise TypeError("Data must be a list")
-        result = sum(data)
-        return result
-    except TypeError:
-        print("Type error occurred")
-    except:  # Error: Bare except after specific except
-        print("Other error occurred")
-    finally:
-        print("Processing complete")
 
-# Test Input: [1, "2", 3]
-# Expected Output: TypeError and "Processing complete\"""",
-        "answer": """except Exception as e:
-        print("Other error occurred:", str(e))""",
-        "hints": {
-            "level1": "Review multiple exception handling.",
-            "level2": "Why should general exceptions be placed after specific ones in exception handling?",
-            "level3": "Specific exceptions should be caught before a general exception clause to avoid masking the details of the actual error, enabling more precise error handling."
-        },
-        "knowledge_point": "Exception order and finally clause"
-    },
     {
         "id": "exception_medium2",
         "category": "Exception",
@@ -1034,64 +915,8 @@ def read_file(filename):
 
 # --- Hard level exception handling problems ---
 question_bank[2].extend([
-    {
-        "id": "exception_hard1",
-        "category": "Exception",
-        "text": """# Problem: Custom exception hierarchy
-class DatabaseError(Exception)  # Error 1: Missing colon
-    pass
 
-class ConnectionError(DatabaseError):
-    def __init__(self, message)  # Error 2: Missing colon
-        super().__init__(message)
 
-def connect_database(connection_string):
-    try:
-        if not connection_string:
-            raise ConnectionError
-        # Simulate connection
-        return True
-    except ConnectionError as error  # Error 3: Missing colon
-        raise DatabaseError("Connection failed") from error
-
-# Test Input: ""
-# Expected Output: DatabaseError with proper context""",
-        "answer": """class DatabaseError(Exception):""",
-        "hints": {
-            "level1": "Review custom exception syntax.",
-            "level2": "What syntax errors are present in the custom exception definitions?",
-            "level3": "Ensure that class definitions and methods include colons, and use proper exception chaining with 'from error' to provide context for the exception."
-        },
-        "knowledge_point": "Custom exception hierarchy and exception chaining"
-    },
-    {
-        "id": "exception_hard2",
-        "category": "Exception",
-        "text": """# Problem: Complex exception handling with cleanup
-def process_files(filenames):
-    opened_files = []
-    try:
-        for name in filenames
-            file = open(name, 'r')  # Error 1: Missing colon
-            opened_files.append(file)
-    except FileNotFoundError as e
-        print(f"File {name} not found")  # Error 2: Missing colon
-    except Exception as e:
-        print(f"Unexpected error: {e}")
-    finally:
-        for file in opened_files  # Error 3: Missing colon
-            file.close()
-
-# Test Input: ["file1.txt", "nonexistent.txt", "file2.txt"]
-# Expected Output: Proper error handling and all opened files closed""",
-        "answer": """for name in filenames:""",
-        "hints": {
-            "level1": "Review file handling syntax.",
-            "level2": "How should the loop be structured to ensure files are properly closed even when an error occurs?",
-            "level3": "Using a try-finally block ensures that cleanup code is executed regardless of whether an error occurs. The loop should correctly iterate over filenames with proper syntax."
-        },
-        "knowledge_point": "Resource management and cleanup"
-    }
 ])
 
 # ====================== File I/O Problems ======================
@@ -1102,7 +927,7 @@ question_bank[0].extend([
         "id": "fileio_easy1",
         "category": "FileIO",
         "text": """# Problem: Basic file reading
-file = open('data.txt')  # Error: No file mode specified
+file = open('data.txt')  # This line has a problem: No file mode specified
 content = file.read()
 file.close()
 
@@ -1116,25 +941,7 @@ file.close()
         },
         "knowledge_point": "File opening modes"
     },
-    {
-        "id": "fileio_easy2",
-        "category": "FileIO",
-        "text": """# Problem: File writing without closing
-def write_message(filename, message):
-    file = open(filename, 'w')
-    file.write(message)
-    # Error: Missing file close
 
-# Test Case: write_message('output.txt', 'Hello')
-# Expected Output: File with content 'Hello'""",
-        "answer": """file.close()""",
-        "hints": {
-            "level1": "Review file handling best practices.",
-            "level2": "Why is it important to close a file after performing write operations?",
-            "level3": "Closing a file ensures that all data is properly written and resources are released. Neglecting to close a file can lead to data corruption and resource leaks."
-        },
-        "knowledge_point": "File resource management"
-    }
 ])
 
 # --- Medium level file I/O problems ---
@@ -1147,7 +954,7 @@ def process_csv(filename):
     with open(filename, 'r') as file:
         header = file.readline()
         for line in file:
-            fields = line.split(',')  # Error: Not handling newline characters
+            fields = line.split(',')  # This line has a problem: Not handling newline characters
             data = {
                 'name': fields[0],
                 'age': fields[1],
@@ -1199,9 +1006,9 @@ question_bank[2].extend([
         "text": """# Problem: Binary file processing
 def process_binary_file(filename):
     try:
-        with open(filename, 'rb') as file  # Error 1: Missing colon
-            header = file.read(4)  # Error 2: Not converting bytes to int
-            size = int.from_bytes(header)  # Error 3: Wrong bytes to int conversion
+        with open(filename, 'rb') as file  # This line has a problem
+            header = file.read(4)
+            size = int.from_bytes(header)
 
             data = file.read(size)
             return process_data(data)
@@ -1226,14 +1033,14 @@ def process_binary_file(filename):
 import fcntl
 
 def process_multiple_files(input_files, output_file):
-    output = open(output_file, 'w')  # Error 1: No context management
+    output = open(output_file, 'w')  # This line has a problem: No context management
 
     for file in input_files
-        try:  # Error 2: Missing colon
+        try:
             with open(file, 'r') as f:
                 fcntl.flock(f, fcntl.LOCK_EX)
                 content = f.readlines
-                process_and_write(content, output)  # Error 3: Missing parentheses
+                process_and_write(content, output)
         finally:
             fcntl.flock(f, fcntl.LOCK_UN)
 
@@ -1253,29 +1060,29 @@ def process_multiple_files(input_files, output_file):
 
 # --- Easy level function problems ---
 question_bank[0].extend([
-#     {
-#         "id": "function_easy1",
-#         "category": "Function",
-#         "text": """# Problem: Basic function definition
-# def calculate_average(numbers)  # Error: Missing colon
-#     total = sum(numbers)
-#     return total/len(numbers)
+    {
+        "id": "function_easy1",
+        "category": "Function",
+        "text": """# Problem: Basic function definition
+def calculate_average(numbers) # This line has a problem
+    total = sum(numbers)
+    return total/len(numbers)
 
-# # Test Input: [1, 2, 3, 4, 5]
-# # Expected Output: 3.0""",
-#         "answer": """def calculate_average(numbers):""",
-#         "hints": {
-#             "level1": "Check function definition syntax.",
-#             "level2": "What punctuation does a function definition in Python require at the end of its header?",
-#             "level3": "Every Python function definition must end with a colon, indicating the start of the function body. Omitting the colon results in a SyntaxError."
-#         },
-#         "knowledge_point": "Function definition syntax"
-#     },
+# Test Input: [1, 2, 3, 4, 5]
+# Expected Output: 3.0""",
+        "answer": """def calculate_average(numbers):""",
+        "hints": {
+            "level1": "Check function definition syntax.",
+            "level2": "What punctuation does a function definition in Python require at the end of its header?",
+            "level3": "Every Python function definition must end with a colon, indicating the start of the function body. Omitting the colon results in a SyntaxError."
+        },
+        "knowledge_point": "Function definition syntax"
+    },
     {
         "id": "function_easy2",
         "category": "Function",
         "text": """# Problem: Function parameter usage
-def greet(name, greeting)  # Error: No default value
+def greet(name, greeting)  # This line has a problem
     print(greeting + " " + name)
 
 # Test Input: greet("John")
@@ -1298,10 +1105,10 @@ question_bank[1].extend([
         "text": """# Problem: Function arguments handling
 def process_user_data(user_id, name, email, age):
     data = {
-        'id': user_id
+        'id': user_id # This line has a problem
         'name': name,
         'email': email,
-        'age': age if type(age) == int else 0  # Error: Wrong type checking
+        'age': age if type(age) == int else 0
     }
     return data
 
@@ -1319,7 +1126,7 @@ def process_user_data(user_id, name, email, age):
         "id": "function_medium2",
         "category": "Function",
         "text": """# Problem: Function with *args
-def calculate_total(*args, tax_rate):  # Error: Non-default argument follows default argument
+def calculate_total(*args, tax_rate):  # This line has a problem: Non-default argument follows default argument
     subtotal = sum(args)
     return subtotal * (1 + tax_rate)
 
@@ -1337,34 +1144,7 @@ def calculate_total(*args, tax_rate):  # Error: Non-default argument follows def
 
 # --- Hard level function problems ---
 question_bank[2].extend([
-    {
-        "id": "function_hard1",
-        "category": "Function",
-        "text": """# Problem: Function with multiple return values and error handling
-def process_data(data_list):
-    results = {}
-    try:
-        for item in data_list
-            if not isinstance(item, (int, float))  # Error 1: Missing colon
-                continue
 
-            value = item * 2,5  # Error 2: Invalid number format
-            results.append(value)  # Error 3: Using append on dictionary
-
-        return results
-    except TypeError as e:
-        return None
-
-# Test Input: [1, "2", 3.5, "text", 4]
-# Expected Output: {1: 2.5, 3.5: 8.75, 4: 10.0}""",
-        "answer": """for item in data_list:""",
-        "hints": {
-            "level1": "Review loop and dictionary operations.",
-            "level2": "How does the incorrect use of dictionary methods affect the output of the function?",
-            "level3": "Appending to a dictionary is not valid; instead, you should build a dictionary by assigning key-value pairs. Also, the syntax in the loop must be corrected for proper iteration."
-        },
-        "knowledge_point": "Error handling and data processing"
-    },
     {
         "id": "function_hard2",
         "category": "Function",
@@ -1401,7 +1181,7 @@ question_bank[0].extend([
         "category": "List",
         "text": """# Problem: Basic list appending
 numbers = [1, 2, 3, 4]
-numbers.append([5, 6])  # Error: Appending list instead of elements
+numbers.append([5, 6])  # This line has a problem: Appending list instead of elements
 
 # Test Input: numbers = [1, 2, 3, 4]
 # Expected Output: [1, 2, 3, 4, 5, 6]""",
@@ -1418,7 +1198,7 @@ numbers.append([5, 6])  # Error: Appending list instead of elements
         "category": "List",
         "text": """# Problem: List slicing
 fruits = ['apple', 'banana', 'cherry', 'date']
-last_two = fruits[-2, -1]  # Error: Incorrect slice syntax
+last_two = fruits[-2, -1]  # This line has a problem: Incorrect slice syntax
 
 # Test Input: fruits = ['apple', 'banana', 'cherry', 'date']
 # Expected Output: ['cherry', 'date']""",
@@ -1439,9 +1219,8 @@ question_bank[1].extend([
         "category": "List",
         "text": """# Problem: List comprehension with filtering
 def filter_process_numbers(numbers):
-    # Error: Incorrect list comprehension logic
-    results = [num // 2 if num % 2 == 0 for num in numbers]
-    # Add only positive numbers after division
+    results = [num // 2 if num % 2 == 0 for num in numbers] # This line has a problem: Incorrect list comprehension logic
+
     positive_nums = [n for n in results if n > 0]
     return sorted(positive_nums)
 
@@ -1455,29 +1234,7 @@ def filter_process_numbers(numbers):
         },
         "knowledge_point": "List comprehension with conditional logic"
     },
-    {
-        "id": "list_medium2",
-        "category": "List",
-        "text": """# Problem: Nested list operations
-def process_matrix(matrix):
-    # Error: Incorrect nested list processing
-    flattened = [num for row in matrix for num in row if num > 0]
-    # Calculate row sums
-    row_sums = [sum(row) for rows in matrix]
-    return flattened, row_sums
 
-# Test Input: [[1, -2, 3], [-4, 5, 6], [7, 8, -9]]
-# Expected Output:
-# Flattened: [1, 3, 5, 6, 7, 8]
-# Row sums: [2, 7, 6]""",
-        "answer": """row_sums = [sum(row) for row in matrix]""",
-        "hints": {
-            "level1": "Review nested list processing.",
-            "level2": "How can you correctly calculate row sums in a matrix?",
-            "level3": "By iterating directly over each row using the correct variable name, you ensure that the sum is computed for each individual row."
-        },
-        "knowledge_point": "Nested list comprehension and operations"
-    }
 ])
 
 # --- Hard level list problems ---
@@ -1487,11 +1244,8 @@ question_bank[2].extend([
         "category": "List",
         "text": """# Problem: Complex list processing with multiple operations
 def process_student_scores(student_data):
-    # Error 1: Incorrect dictionary comprehension in list context
-    scores = {student['name']: student['scores'] for student in student_data}
-    # Error 2: Wrong average calculation
+    scores = {student['name']: student['scores'] for student in student_data} # This line has a problem :Incorrect list comprehension logic
     averages = [sum(scores) / len(scores) for scores in scores.items()]
-    # Error 3: Incorrect sorting syntax
     ranked_students = sorted(averages, key=lambda x: x[1], reversed=True)
 
     return ranked_students[:3]  # Return top 3 students
@@ -1510,42 +1264,7 @@ def process_student_scores(student_data):
         },
         "knowledge_point": "Dictionary comprehension, list operations, and sorting"
     },
-    {
-        "id": "list_hard2",
-        "category": "List",
-        "text": """# Problem: Advanced list manipulation with custom sorting
-def custom_sort_and_group(items):
-    # Error 1: Incorrect grouping syntax
-    groups = [item for item in items group by item.type]
-    # Error 2: Wrong sorting method call
-    sorted_groups = groups.sort(key=lambda x: len(x))
-    # Error 3: Incorrect list flattening
-    result = [item for group in sorted_groups for items in group]
 
-    return result
-
-# Test Input: [
-#     {'type': 'A', 'value': 1},
-#     {'type': 'B', 'value': 2},
-#     {'type': 'A', 'value': 3},
-#     {'type': 'B', 'value': 4}
-# ]
-# Expected Output: [
-#     {'type': 'A', 'value': 1},
-#     {'type': 'A', 'value': 3},
-#     {'type': 'B', 'value': 2},
-#     {'type': 'B', 'value': 4}
-# ]""",
-        "answer": """groups = {}
-    for item in items:
-        groups.setdefault(item['type'], []).append(item)""",
-        "hints": {
-            "level1": "Review list grouping techniques.",
-            "level2": "How can you group items by a specific key using a dictionary?",
-            "level3": "By using a dictionary's setdefault() method, you can group items by their type and then sort them accordingly."
-        },
-        "knowledge_point": "List grouping, sorting, and flattening"
-    }
 ])
 
 # ====================== Algorithm Problems ======================
@@ -1558,7 +1277,7 @@ question_bank[2].extend([
 def binary_search(arr, low, high, x):
     if high >= low:
         mid = (low + high) // 2
-        if arr[mid] > x: # Error: Should be arr[mid] == x
+        if arr[mid] > x: # This line has a problem
             return mid
         elif arr[mid] > x:
             return binary_search(arr, low, mid - 1, x)
@@ -1576,39 +1295,7 @@ def binary_search(arr, low, high, x):
         },
         "knowledge_point": "Binary search algorithm implementation"
     },
-    {
-        "id": "algorithm_hard2",
-        "category": "Algorithm",
-        "text": """# Binary Search in Rotated Array (Hard)
-def search(nums, target):
-    low = 0
-    high = len(nums) - 1
-    while low <= high:
-        mid = (low + high) // 2
-        if nums[mid] == target:
-            return mid
-        if nums[low] <= nums[mid]: # Error
-            if nums[low] <= target < nums[mid]:
-                high = mid - 1
-            else:
-                low = mid + 1
-        else:
-            if nums[mid] < target <= nums[high]:
-                low = mid + 1
-            else:
-                high = mid - 1
-    return -1
 
-# Test Input: nums = [4, 5, 6, 7, 0, 1, 2], target = 0
-# Expected Output: 4""",
-        "answer": """if nums[low] <= nums[mid]:""",
-        "hints": {
-            "level1": "Review binary search in a rotated array.",
-            "level2": "How can you determine if the left half of the array is sorted?",
-            "level3": "By comparing nums[low] and nums[mid] using '<=' you can decide which half of the array is correctly sorted and adjust the search range."
-        },
-        "knowledge_point": "Binary search in rotated array"
-    },
     {
         "id": "algorithm_hard3",
         "category": "Algorithm",
@@ -1653,7 +1340,7 @@ def bfs_shortest_path(graph, start, end):
         for neighbor in graph[vertex]:
             if neighbor not in visited:
                 visited.add(neighbor)
-                queue.append((neighbor, distance)) # Error: Should be distance + 1
+                queue.append((neighbor, distance)) # This line has a problem
     return -1
 
 # Test Input: Graph with shortest path of length 2
@@ -1681,7 +1368,7 @@ def level_order_traversal(root):
     queue = deque([root])
     result = []
     while queue:
-        node = queue.pop() # Error: Should be popleft()
+        node = queue.pop() # This line has a problem
         result.append(node.val)
         if node.left:
             queue.append(node.left)
@@ -1710,7 +1397,7 @@ def reverse_linked_list(head):
         next_node = curr.next
         curr.next = prev
         prev = curr
-        curr = next
+        curr = next #This line has a problem
     return prev
 
 # Test Input: Linked list with nodes 1->2->3->4->5
@@ -1734,7 +1421,7 @@ def selection_sort(arr):
         for j in range(i+1, n):
             if arr[j] < arr[min_idx]:
                 min_idx = j
-        arr[i] = arr[min_idx]  # Error: Incorrect swap
+        arr[i] = arr[min_idx]  # This line has a problem : Incorrect swap
         arr[min_idx] = arr[i]
     return arr
 
