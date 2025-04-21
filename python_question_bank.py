@@ -59,24 +59,24 @@ if number > 5  # This line has a problem
 
 # --- Medium level syntax problems ---
 question_bank[1].extend([
-    {
-        "id": "syntax_medium1",
-        "category": "Syntax",
-        "text": """# Problem: Function definition with default parameters
-def process_data(data, options)  # This line has a problem
-    if type(data) != list:
-        raise TypeError("Data must be a list")
-    return [x * 2 for x in data]
+#     {
+#         "id": "syntax_medium1",
+#         "category": "Syntax",
+#         "text": """# Problem: Function definition with default parameters
+# def process_data(data, options)  # This line has a problem
+#     if type(data) != list:
+#         raise TypeError("Data must be a list")
+#     return [x * 2 for x in data]
 
-# Expected Output: TypeError: process_data() missing 1 required positional argument: 'options'""",
-        "answer": """def process_data(data, options=None):""",
-        "hints": {
-            "level1": "Review function definition syntax.",
-            "level2": "How can you provide a default value for a parameter and ensure correct punctuation in a function header?",
-            "level3": "In Python, when defining a function with optional parameters, you must include a colon at the end and use default values (e.g. options=None) so that the function is defined correctly."
-        },
-        "knowledge_point": "Function definition and parameter handling"
-    },
+# # Expected Output: TypeError: process_data() missing 1 required positional argument: 'options'""",
+#         "answer": """def process_data(data, options=None):""",
+#         "hints": {
+#             "level1": "Review function definition syntax.",
+#             "level2": "How can you provide a default value for a parameter and ensure correct punctuation in a function header?",
+#             "level3": "In Python, when defining a function with optional parameters, you must include a colon at the end and use default values (e.g. options=None) so that the function is defined correctly."
+#         },
+#         "knowledge_point": "Function definition and parameter handling"
+#     },
     {
         "id": "syntax_medium2",
         "category": "Syntax",
@@ -288,36 +288,36 @@ print(count)
 # --- Hard level loop problems ---
 question_bank[2].extend([
 
-    {
-        "id": "loop_hard2",
-        "category": "Loop",
-        "text": """# Problem: Loop with dynamic conditions
-def find_sequence(numbers):
-    length = len(numbers)
-    current_seq = 1
-    max_seq = 1
+#     {
+#         "id": "loop_hard2",
+#         "category": "Loop",
+#         "text": """# Problem: Loop with dynamic conditions
+# def find_sequence(numbers):
+#     length = len(numbers)
+#     current_seq = 1
+#     max_seq = 1
 
-    i = 0
-    while i < length - 1:
-        while numbers[i+1] = numbers[i] + 1:  # This line has a problem
-            current_seq += 1
-            i += 1
-        if current_seq > max_seq
-            max_seq = current_seq:
-        current_seq = 1
+#     i = 0
+#     while i < length - 1:
+#         while numbers[i+1] = numbers[i] + 1:  # This line has a problem
+#             current_seq += 1
+#             i += 1
+#         if current_seq > max_seq
+#             max_seq = current_seq:
+#         current_seq = 1
 
-    return max_seq
+#     return max_seq
 
-# Test Input: numbers = [1, 2, 3, 5, 6, 7, 8, 10]
-# Expected Output: 4 (longest sequence: 5,6,7,8)""",
-        "answer": """while numbers[i+1] == numbers[i] + 1:""",
-        "hints": {
-            "level1": "Examine the while loop condition and comparison operator.",
-            "level2": "What correction is needed to properly compare adjacent elements in the list?",
-            "level3": "The while loop should use '==' for comparison instead of '=', which is used for assignment. This ensures the condition correctly checks if the next number is exactly one greater than the current."
-        },
-        "knowledge_point": "Dynamic conditions and sequence tracking"
-    },
+# # Test Input: numbers = [1, 2, 3, 5, 6, 7, 8, 10]
+# # Expected Output: 4 (longest sequence: 5,6,7,8)""",
+#         "answer": """while numbers[i+1] == numbers[i] + 1:""",
+#         "hints": {
+#             "level1": "Examine the while loop condition and comparison operator.",
+#             "level2": "What correction is needed to properly compare adjacent elements in the list?",
+#             "level3": "The while loop should use '==' for comparison instead of '=', which is used for assignment. This ensures the condition correctly checks if the next number is exactly one greater than the current."
+#         },
+#         "knowledge_point": "Dynamic conditions and sequence tracking"
+#     },
     {
         "id": "loop_hard3",
         "category": "Loop",
@@ -380,23 +380,23 @@ message = first + last   # This line has a problem
 
 # --- Medium level string problems ---
 question_bank[1].extend([
-    {
-        "id": "string_medium1",
-        "category": "String",
-        "text": """# Problem: String formatting with multiple variables
-def format_user_info(name, age, city):
-    info = "Name: %s, Age: %d, City: %s" % name, age, city  # This line has a problem: Incorrect tuple formatting
-    return info.capitalize
+#     {
+#         "id": "string_medium1",
+#         "category": "String",
+#         "text": """# Problem: String formatting with multiple variables
+# def format_user_info(name, age, city):
+#     info = "Name: %s, Age: %d, City: %s" % name, age, city  # This line has a problem: Incorrect tuple formatting
+#     return info.capitalize
 
-# Expected Output: Name: John, Age: 25, City: New York""",
-        "answer": """info = f"Name: {name}, Age: {age}, City: {city}" """,
-        "hints": {
-            "level1": "Review string formatting.",
-            "level2": "How can you correctly format multiple variables into a string?",
-            "level3": "Using f-strings or properly parenthesized tuple formatting ensures that each variable is inserted into the string at the correct position."
-        },
-        "knowledge_point": "String formatting with multiple variables"
-    },
+# # Expected Output: Name: John, Age: 25, City: New York""",
+#         "answer": """info = f"Name: {name}, Age: {age}, City: {city}" """,
+#         "hints": {
+#             "level1": "Review string formatting.",
+#             "level2": "How can you correctly format multiple variables into a string?",
+#             "level3": "Using f-strings or properly parenthesized tuple formatting ensures that each variable is inserted into the string at the correct position."
+#         },
+#         "knowledge_point": "String formatting with multiple variables"
+#     },
     {
         "id": "string_medium2",
         "category": "String",
@@ -631,811 +631,811 @@ print(num_str + 1) # This line has a problem
 # ====================== Operator Precedence Problems ======================
 
 # --- Easy level operator precedence problems ---
-question_bank[0].extend([
-    {
-        "id": "operator_easy1",
-        "category": "OperatorPrecedence",
-        "text": """# Simple Operator Precedence (Easy)
-result = 5 + 2 * 3 # This line has a problem
-print(result)
-# Expected Output: 21""",
-        "answer": """result = (5 + 2) * 3""",
-        "hints": {
-            "level1": "Check operator precedence.",
-            "level2": "What is the natural order of operations in Python for addition and multiplication?",
-            "level3": "Multiplication is performed before addition in Python's operator precedence rules. Using parentheses can clarify the intended order of operations."
-        },
-        "knowledge_point": "Basic operator precedence rules"
-    }
-])
-
-# --- Medium level operator precedence problems ---
-question_bank[1].extend([
-    {
-        "id": "operator_medium1",
-        "category": "OperatorPrecedence",
-        "text": """# Multiple Operations (Medium)
-x = 10
-y = 5
-z = 2
-result = x + y * z ** 2 # This line has a problem
-print(result)
-# Expected Output: 30""",
-        "answer": """result = x + (y * (z ** 2))""",
-        "hints": {
-            "level1": "Review operator precedence.",
-            "level2": "How are exponentiation, multiplication, and addition prioritized in Python?",
-            "level3": "Python evaluates exponentiation (**) first, then multiplication, and finally addition. Parentheses help enforce the intended order of operations."
-        },
-        "knowledge_point": "Complex operator precedence"
-    }
-])
-
-# --- Hard level operator precedence problems ---
-question_bank[2].extend([
-    {
-        "id": "operator_hard1",
-        "category": "OperatorPrecedence",
-        "text": """# Complex Operations with Mixed Types (Hard)
-a = "5"
-b = 2
-c = "3"
-result = a + b * c # This line has a problem
-# Expected Output: 11 (as integer)""",
-        "answer": """result = int(a) + (b * int(c))""",
-        "hints": {
-            "level1": "Check mixed type operations.",
-            "level2": "How can you ensure that string values are correctly used in arithmetic expressions?",
-            "level3": "Convert the string values to integers before performing arithmetic operations to ensure proper operator precedence is applied."
-        },
-        "knowledge_point": "Mixed type conversion and operator precedence"
-    }
-])
-
-# ====================== Control Flow Problems ======================
-
-# --- Easy level control flow problems ---
-question_bank[0].extend([
-    {
-        "id": "controlflow_easy1",
-        "category": "ControlFlow",
-        "text": """# Problem: Simple if-else condition
-def check_score(score):
-    if score >= 90:
-        print("A")
-    if score >= 80:  # This line has a problem
-        print("B")
-    if score >= 70:
-        print("C")
-    else:
-        print("F")
-
-# Test Input: score = 85
-# Expected Output: B
-# Actual Output: B C""",
-        "answer": """elif score >= 80:""",
-        "hints": {
-            "level1": "Review if-elif-else structure.",
-            "level2": "What change is needed to prevent multiple conditions from triggering in a chain of if statements?",
-            "level3": "Using 'elif' ensures that once a condition is met, the remaining conditions are skipped, thereby preventing multiple outputs."
-        },
-        "knowledge_point": "if-elif-else chain"
-    },
-    {
-        "id": "controlflow_easy2",
-        "category": "ControlFlow",
-        "text": """# Problem: Basic for loop
-def sum_even_numbers(numbers):
-    total = 0
-    for num in numbers:
-        if num % 2:  # This line has a problem
-            total += num
-    return total
-
-# Test Input: [1, 2, 3, 4, 5, 6]
-# Expected Output: 12 (2 + 4 + 6)
-# Actual Output: 9 (1 + 3 + 5)""",
-        "answer": """if num % 2 == 0:""",
-        "hints": {
-            "level1": "Review modulus operation for even numbers.",
-            "level2": "How do you correctly check if a number is even using the modulus operator?",
-            "level3": "The condition 'num % 2 == 0' evaluates to True when a number is even, ensuring that only even numbers are summed."
-        },
-        "knowledge_point": "Condition for even numbers"
-    }
-])
-
-# --- Medium level control flow problems ---
-question_bank[1].extend([
-
-    {
-        "id": "controlflow_medium2",
-        "category": "ControlFlow",
-        "text": """# Problem: Try-except with multiple exceptions
-def divide_and_convert(a, b):
-    try:
-        result = a / b
-        return int(result)
-    except:  # This line has a problem: Too broad exception clause
-        return "Error"
-
-# Test Input 1: a=5, b=0
-# Test Input 2: a=5.5, b=2
-# Expected Output 1: "Division by zero"
-# Expected Output 2: 2""",
-        "answer": """except ZeroDivisionError:
-        return "Division by zero"
-    except ValueError:
-        return "Conversion error\"""",
-        "hints": {
-            "level1": "Review exception handling.",
-            "level2": "Why should exceptions be handled specifically rather than using a bare except?",
-            "level3": "Handling specific exceptions, such as ZeroDivisionError and ValueError, provides more precise error handling and prevents unintended error catching."
-        },
-        "knowledge_point": "Exception handling specificity"
-    }
-])
-
-# --- Hard level control flow problems ---
-question_bank[2].extend([
-    {
-        "id": "controlflow_hard1",
-        "category": "ControlFlow",
-        "text": """# Problem: Complex nested control flow
-def process_data(data_list):
-    results = []
-    try:
-        for item in data_list:
-            if not isinstance(item, dict):
-                continue
-
-            if item.get('status') = 'active':  # This line has a problem
-                if item.get('value', 0) > 100
-                    results.append(item):
-
-    except TypeError as e:
-        return f"Error processing data: {str(e)}"
-
-    return sorted(results, key=lambda x: x['value'])
-
-# Test Input: [
-#     {'status': 'active', 'value': 150},
-#     {'status': 'inactive', 'value': 200},
-#     {'status': 'active', 'value': 120},
-#     'invalid_item'
-# ]
-# Expected Output: [
-#     {'status': 'active', 'value': 120},
-#     {'status': 'active', 'value': 150}
-# ]""",
-        "answer": """if item.get('status') == 'active':""",
-        "hints": {
-            "level1": "Review nested condition syntax.",
-            "level2": "What corrections are necessary for proper condition checking in nested structures?",
-            "level3": "The error stems from using assignment '=' instead of comparison '==' in conditionals and missing colons after if statements. Correct syntax is essential for proper flow control."
-        },
-        "knowledge_point": "Nested conditions, error handling, and type checking"
-    },
-    {
-        "id": "controlflow_hard2",
-        "category": "ControlFlow",
-        "text": """# Problem: State machine implementation
-def process_workflow(tasks):
-    current_state = 'START'
-    processed = []
-
-    while tasks:
-        task = tasks.pop[0]  # This line has a problem
-
-        if current_state in 'START':
-            next_state = task.get('type', 'INVALID')
-        elif current_state == 'PROCESSING'
-            if task['status'] = 'complete':
-                next_state = 'COMPLETED'
-                processed.append(task)
-
-        current_state = next_state
-
-    return processed
-
-# Test Input: [
-#     {'type': 'PROCESSING', 'status': 'pending'},
-#     {'type': 'PROCESSING', 'status': 'complete'},
-#     {'type': 'COMPLETED', 'status': 'done'}
-# ]
-# Expected Output: [{'type': 'PROCESSING', 'status': 'complete'}]""",
-        "answer": """task = tasks.pop(0)""",
-        "hints": {
-            "level1": "Review list method usage.",
-            "level2": "How can you correctly call a method to pop the first element of a list?",
-            "level3": "Using 'pop(0)' instead of pop[0] is necessary to properly remove and return the first element from the list. Also, ensure comparisons use '==' rather than '='."
-        },
-        "knowledge_point": "State machines, method calls, and condition checking"
-    }
-])
-
-# ====================== Exception Handling Problems ======================
-
-# --- Easy level exception handling problems ---
-question_bank[0].extend([
-
-    {
-        "id": "exception_easy2",
-        "category": "Exception",
-        "text": """# Problem: Missing exception variable
-def convert_to_int(text):
-    try:
-        number = int(text)
-        return number
-    except ValueError as:  #This line has a problem
-        print("Conversion failed")
-        return None
-
-# Test Input: "abc"
-# Expected Output: "Conversion failed\"""",
-        "answer": """except ValueError as e:""",
-        "hints": {
-            "level1": "Check exception syntax.",
-            "level2": "Why is it important to bind the exception to a variable in an except clause?",
-            "level3": "Binding the exception to a variable using 'as e' allows you to access the exception details, which aids in debugging and logging."
-        },
-        "knowledge_point": "Exception variable syntax"
-    }
-])
-
-# --- Medium level exception handling problems ---
-question_bank[1].extend([
-
-    {
-        "id": "exception_medium2",
-        "category": "Exception",
-        "text": """# Problem: Exception in context manager
-def read_file(filename):
-    try:
-        with open(filename, 'r') as file:
-            data = file.read()
-            return data
-    except FileNotFoundError:
-        raise  # Error: Bare raise without context
-    finally:
-        file.close()  # Error: File already closed by context manager
-
-# Test Input: "nonexistent.txt"
-# Expected Output: FileNotFoundError with proper context""",
-        "answer": """except FileNotFoundError as e:
-        raise FileNotFoundError(f"Could not find file: {filename}") from e""",
-        "hints": {
-            "level1": "Review file handling with exceptions.",
-            "level2": "What is the effect of manually closing a file when using a context manager?",
-            "level3": "When using a 'with' statement, the file is automatically closed after the block is executed. Manually closing the file can cause errors, so it's best to let the context manager handle it."
-        },
-        "knowledge_point": "Context managers and exception propagation"
-    }
-])
-
-# --- Hard level exception handling problems ---
-question_bank[2].extend([
-
-
-])
-
-# ====================== File I/O Problems ======================
-
-# --- Easy level file I/O problems ---
-question_bank[0].extend([
-    {
-        "id": "fileio_easy1",
-        "category": "FileIO",
-        "text": """# Problem: Basic file reading
-file = open('data.txt')  # This line has a problem: No file mode specified
-content = file.read()
-file.close()
-
-# Test Case: Reading from 'data.txt'
-# Expected Output: Content of file""",
-        "answer": """file = open('data.txt', 'r')""",
-        "hints": {
-            "level1": "Review file opening modes.",
-            "level2": "What mode should be specified when you intend to read a file?",
-            "level3": "When opening a file for reading, you must use the 'r' mode to indicate that the file is being read, which prevents unintended write operations."
-        },
-        "knowledge_point": "File opening modes"
-    },
-
-])
-
-# --- Medium level file I/O problems ---
-question_bank[1].extend([
-    {
-        "id": "fileio_medium1",
-        "category": "FileIO",
-        "text": """# Problem: CSV file processing
-def process_csv(filename):
-    with open(filename, 'r') as file:
-        header = file.readline()
-        for line in file:
-            fields = line.split(',')  # This line has a problem: Not handling newline characters
-            data = {
-                'name': fields[0],
-                'age': fields[1],
-                'city': fields[2]
-            }
-            process_record(data)
-
-# Test Case: CSV file with 'name,age,city\\nJohn,25,NY\\n'
-# Expected Output: Processed data without \\n""",
-        "answer": """fields = line.strip().split(',')""",
-        "hints": {
-            "level1": "Review CSV file processing.",
-            "level2": "How can you ensure that newline characters do not affect field values when processing CSV data?",
-            "level3": "Using the strip() method removes newline characters from each line, allowing you to accurately split the CSV fields."
-        },
-        "knowledge_point": "CSV line processing"
-    },
-    {
-        "id": "fileio_medium2",
-        "category": "FileIO",
-        "text": """# Problem: File appending with error handling
-def append_log(filename, message):
-    try:
-        file = open(filename, 'a')
-        file.write(message)
-    except IOError:
-        print("Error writing to file")
-    finally:
-        file.close()  # Error: file might not be defined
-
-# Test Case: append_log('log.txt', 'New message')
-# Expected Output: Appended message or error handling""",
-        "answer": """file = None
-    try:""",
-        "hints": {
-            "level1": "Review exception handling with file operations.",
-            "level2": "How can you ensure that the file variable is defined even if an error occurs during file opening?",
-            "level3": "Initializing the file variable before the try block prevents reference errors in the finally block, ensuring that file.close() is only called if the file was successfully opened."
-        },
-        "knowledge_point": "Exception handling with files"
-    }
-])
-
-# --- Hard level file I/O problems ---
-question_bank[2].extend([
-    {
-        "id": "fileio_hard1",
-        "category": "FileIO",
-        "text": """# Problem: Binary file processing
-def process_binary_file(filename):
-    try:
-        with open(filename, 'rb') as file  # This line has a problem
-            header = file.read(4)
-            size = int.from_bytes(header)
-
-            data = file.read(size)
-            return process_data(data)
-    except IOError as e:
-        print(f"Error processing file: {e}")
-        return None
-
-# Test Case: Binary file with 4-byte header indicating data size
-# Expected Output: Processed binary data""",
-        "answer": """with open(filename, 'rb') as file:""",
-        "hints": {
-            "level1": "Review binary file processing.",
-            "level2": "What syntax is required when opening a file in binary mode?",
-            "level3": "Using 'with open(filename, 'rb') as file:' ensures that the file is opened in binary mode, and proper conversion methods (like int.from_bytes) must be used to convert binary data."
-        },
-        "knowledge_point": "Binary file handling and byte conversion"
-    },
-    {
-        "id": "fileio_hard2",
-        "category": "FileIO",
-        "text": """# Problem: Multi-file processing with locks
-import fcntl
-
-def process_multiple_files(input_files, output_file):
-    output = open(output_file, 'w')  # This line has a problem: No context management
-
-    for file in input_files
-        try:
-            with open(file, 'r') as f:
-                fcntl.flock(f, fcntl.LOCK_EX)
-                content = f.readlines
-                process_and_write(content, output)
-        finally:
-            fcntl.flock(f, fcntl.LOCK_UN)
-
-# Test Case: Multiple input files to be processed and combined
-# Expected Output: Combined processed content in output file""",
-        "answer": """with open(output_file, 'w') as output:""",
-        "hints": {
-            "level1": "Review file locking and context management.",
-            "level2": "How can you use context managers to ensure files are properly managed when processing multiple files?",
-            "level3": "Using a context manager (the 'with' statement) ensures that files are properly opened and closed, and that methods are called with the correct syntax."
-        },
-        "knowledge_point": "File locking and resource management"
-    }
-])
-
-# ====================== Function Problems ======================
-
-# --- Easy level function problems ---
-question_bank[0].extend([
-    {
-        "id": "function_easy1",
-        "category": "Function",
-        "text": """# Problem: Basic function definition
-def calculate_average(numbers) # This line has a problem
-    total = sum(numbers)
-    return total/len(numbers)
-
-# Test Input: [1, 2, 3, 4, 5]
-# Expected Output: 3.0""",
-        "answer": """def calculate_average(numbers):""",
-        "hints": {
-            "level1": "Check function definition syntax.",
-            "level2": "What punctuation does a function definition in Python require at the end of its header?",
-            "level3": "Every Python function definition must end with a colon, indicating the start of the function body. Omitting the colon results in a SyntaxError."
-        },
-        "knowledge_point": "Function definition syntax"
-    },
-    {
-        "id": "function_easy2",
-        "category": "Function",
-        "text": """# Problem: Function parameter usage
-def greet(name, greeting)  # This line has a problem
-    print(greeting + " " + name)
-
-# Test Input: greet("John")
-# Expected Output: "Hello John\"""",
-        "answer": """def greet(name, greeting="Hello"):""",
-        "hints": {
-            "level1": "Review function parameters.",
-            "level2": "How can you define a function that provides a default value for a parameter?",
-            "level3": "Setting a default value (e.g., greeting='Hello') in the function definition ensures that if the argument is omitted, the function still has a valid value to use."
-        },
-        "knowledge_point": "Default parameters"
-    }
-])
-
-# --- Medium level function problems ---
-question_bank[1].extend([
-    {
-        "id": "function_medium1",
-        "category": "Function",
-        "text": """# Problem: Function arguments handling
-def process_user_data(user_id, name, email, age):
-    data = {
-        'id': user_id # This line has a problem
-        'name': name,
-        'email': email,
-        'age': age if type(age) == int else 0
-    }
-    return data
-
-# Test Input: process_user_data(1, "John", "john@email.com", "25")
-# Expected Output: {'id': 1, 'name': 'John', 'email': 'john@email.com', 'age': 25}""",
-        "answer": """'id': user_id,""",
-        "hints": {
-            "level1": "Review dictionary creation and type checking.",
-            "level2": "What is the correct way to iterate over a dictionary's items and check the type of a variable?",
-            "level3": "Using .items() to iterate over a dictionary and isinstance() for type checking ensures that you process each key-value pair correctly and handle type conversions appropriately."
-        },
-        "knowledge_point": "Type checking and data processing"
-    },
-    {
-        "id": "function_medium2",
-        "category": "Function",
-        "text": """# Problem: Function with *args
-def calculate_total(*args, tax_rate):  # This line has a problem: Non-default argument follows default argument
-    subtotal = sum(args)
-    return subtotal * (1 + tax_rate)
-
-# Test Input: calculate_total(10, 20, 30, tax_rate=0.1)
-# Expected Output: 66.0""",
-        "answer": """def calculate_total(tax_rate, *args):""",
-        "hints": {
-            "level1": "Review function parameter ordering.",
-            "level2": "How should parameters be ordered when using *args along with non-default parameters?",
-            "level3": "In Python, non-default parameters must come before *args to avoid ambiguity and ensure that all arguments are passed correctly to the function."
-        },
-        "knowledge_point": "Variable arguments and keyword arguments"
-    }
-])
-
-# --- Hard level function problems ---
-question_bank[2].extend([
-
-    {
-        "id": "function_hard2",
-        "category": "Function",
-        "text": """# Problem: Decorator function implementation
-def validate_input(func)  # Error 1: Missing colon
-    def wrapper(*args, **kwargs)  # Error 2: Missing colon
-        if len(args) = 0:  # Error 3: Assignment instead of comparison
-            raise ValueError("No arguments provided")
-        return func(*args, **kwargs)
-    return wrapper
-
-@validate_input
-def process_numbers(numbers):
-    return sum(numbers)
-
-# Test Input: process_numbers([1, 2, 3])
-# Expected Output: 6""",
-        "answer": """def validate_input(func):""",
-        "hints": {
-            "level1": "Review decorator syntax.",
-            "level2": "What changes are necessary to correctly define a decorator function?",
-            "level3": "The decorator function should have proper parentheses and colons, and the condition should use '==' for comparison, not '='."
-        },
-        "knowledge_point": "Decorator syntax and function wrapping"
-    }
-])
-
-# ====================== List Problems ======================
-
-# --- Easy level list problems ---
-question_bank[0].extend([
-    {
-        "id": "list_easy1",
-        "category": "List",
-        "text": """# Problem: Basic list appending
-numbers = [1, 2, 3, 4]
-numbers.append([5, 6])  # This line has a problem: Appending list instead of elements
-
-# Test Input: numbers = [1, 2, 3, 4]
-# Expected Output: [1, 2, 3, 4, 5, 6]""",
-        "answer": """numbers.extend([5, 6])""",
-        "hints": {
-            "level1": "Review list methods.",
-            "level2": "What is the difference between append and extend when adding elements to a list?",
-            "level3": "append() adds its argument as a single element, while extend() iterates over its argument and adds each element individually."
-        },
-        "knowledge_point": "List methods append vs extend"
-    },
-    {
-        "id": "list_easy2",
-        "category": "List",
-        "text": """# Problem: List slicing
-fruits = ['apple', 'banana', 'cherry', 'date']
-last_two = fruits[-2, -1]  # This line has a problem: Incorrect slice syntax
-
-# Test Input: fruits = ['apple', 'banana', 'cherry', 'date']
-# Expected Output: ['cherry', 'date']""",
-        "answer": """last_two = fruits[-2:]""",
-        "hints": {
-            "level1": "Review list slicing syntax.",
-            "level2": "How do you correctly slice a list to obtain the last two elements?",
-            "level3": "Using 'fruits[-2:]' slices the list from the second-to-last element to the end, returning the last two elements."
-        },
-        "knowledge_point": "List slicing syntax"
-    }
-])
-
-# --- Medium level list problems ---
-question_bank[1].extend([
-    {
-        "id": "list_medium1",
-        "category": "List",
-        "text": """# Problem: List comprehension with filtering
-def filter_process_numbers(numbers):
-    results = [num // 2 if num % 2 == 0 for num in numbers] # This line has a problem: Incorrect list comprehension logic
-
-    positive_nums = [n for n in results if n > 0]
-    return sorted(positive_nums)
-
-# Test Input: [1, 2, 3, 4, 5, 6, 7, 8]
-# Expected Output: [1, 2, 3, 4]""",
-        "answer": """results = [num // 2 for num in numbers if num % 2 == 0]""",
-        "hints": {
-            "level1": "Review list comprehension syntax.",
-            "level2": "How can you include a condition within a list comprehension?",
-            "level3": "By placing the condition after the iteration variable (e.g. 'for num in numbers if num % 2 == 0'), you filter the elements directly in the comprehension."
-        },
-        "knowledge_point": "List comprehension with conditional logic"
-    },
-
-])
-
-# --- Hard level list problems ---
-question_bank[2].extend([
-    {
-        "id": "list_hard1",
-        "category": "List",
-        "text": """# Problem: Complex list processing with multiple operations
-def process_student_scores(student_data):
-    scores = {student['name']: student['scores'] for student in student_data} # This line has a problem :Incorrect list comprehension logic
-    averages = [sum(scores) / len(scores) for scores in scores.items()]
-    ranked_students = sorted(averages, key=lambda x: x[1], reversed=True)
-
-    return ranked_students[:3]  # Return top 3 students
-
-# Test Input: [
-#     {'name': 'John', 'scores': [85, 90, 78]},
-#     {'name': 'Alice', 'scores': [92, 88, 95]},
-#     {'name': 'Bob', 'scores': [76, 85, 82]}
-# ]
-# Expected Output: [('Alice', 91.67), ('John', 84.33), ('Bob', 81.00)]""",
-        "answer": """scores = {s['name']: sum(s['scores'])/len(s['scores']) for s in student_data}""",
-        "hints": {
-            "level1": "Review dictionary and list comprehension.",
-            "level2": "How can you compute averages using a dictionary comprehension?",
-            "level3": "By iterating over the list of students and calculating the average of scores using sum() and len(), you can create a dictionary mapping student names to their average scores."
-        },
-        "knowledge_point": "Dictionary comprehension, list operations, and sorting"
-    },
-
-])
-
-# ====================== Algorithm Problems ======================
-
-question_bank[2].extend([
-    {
-        "id": "algorithm_hard1",
-        "category": "Algorithm",
-        "text": """# Binary Search Variations (Hard)
-def binary_search(arr, low, high, x):
-    if high >= low:
-        mid = (low + high) // 2
-        if arr[mid] > x: # This line has a problem
-            return mid
-        elif arr[mid] > x:
-            return binary_search(arr, low, mid - 1, x)
-        else:
-            return binary_search(arr, mid + 1, high, x)
-    return -1
-
-# Test Input: arr = [1, 2, 3, 4, 5], x = 3
-# Expected Output: 2 (index of x in arr)""",
-        "answer": """if arr[mid] == x:""",
-        "hints": {
-            "level1": "Review binary search conditions.",
-            "level2": "What condition should be checked to determine if the middle element equals the target?",
-            "level3": "The condition should use 'if arr[mid] == x:' to verify equality, ensuring that the binary search works as expected."
-        },
-        "knowledge_point": "Binary search algorithm implementation"
-    },
-
-    {
-        "id": "algorithm_hard3",
-        "category": "Algorithm",
-        "text": """# Graph Traversal - BFS (Hard)
-def bfs(graph, start):
-    visited = set()
-    queue = [] # Error: Should use deque()
-    visited.add(start)
-    queue.append(start)
-    while queue:
-        vertex = queue.pop(0)
-        print(vertex, end=" ")
-        for neighbor in graph[vertex]:
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append(neighbor)
-
-# Test Input: Simple graph with vertices 0-4
-# Expected Output: BFS traversal starting from vertex 0""",
-        "answer": """from collections import deque
-    queue = deque()""",
-        "hints": {
-            "level1": "Review BFS queue implementation.",
-            "level2": "Why might a deque be more efficient than a list for queue operations in BFS?",
-            "level3": "A deque provides O(1) time complexity for popping elements from the left, making it more efficient for breadth-first search than a list."
-        },
-        "knowledge_point": "BFS graph traversal with efficient data structures"
-    },
-    {
-        "id": "algorithm_hard4",
-        "category": "Algorithm",
-        "text": """# BFS Shortest Path (Hard)
-def bfs_shortest_path(graph, start, end):
-    visited = set()
-    queue = deque()
-    visited.add(start)
-    queue.append((start, 0))
-    while queue:
-        vertex, distance = queue.popleft()
-        if vertex == end:
-            return distance
-        for neighbor in graph[vertex]:
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append((neighbor, distance)) # This line has a problem
-    return -1
-
-# Test Input: Graph with shortest path of length 2
-# Expected Output: 2""",
-        "answer": """queue.append((neighbor, distance + 1))""",
-        "hints": {
-            "level1": "Review BFS shortest path logic.",
-            "level2": "What should be modified in the tuple added to the queue to correctly track distance?",
-            "level3": "When adding neighbors to the queue, the distance should be incremented (i.e., distance + 1) to correctly reflect the number of steps taken."
-        },
-        "knowledge_point": "BFS shortest path tracking"
-    }
-])
-
-# ====================== Data Structure Problems ======================
-
-question_bank[2].extend([
-    {
-        "id": "datastructure_hard1",
-        "category": "DataStructure",
-        "text": """# Binary Tree Level Order Traversal (Hard)
-def level_order_traversal(root):
-    if not root:
-        return []
-    queue = deque([root])
-    result = []
-    while queue:
-        node = queue.pop() # This line has a problem
-        result.append(node.val)
-        if node.left:
-            queue.append(node.left)
-        if node.right:
-            queue.append(node.right)
-    return result
-
-# Test Input: Binary tree with 7 nodes
-# Expected Output: Level order traversal result""",
-        "answer": """node = queue.popleft()""",
-        "hints": {
-            "level1": "Review BFS traversal in trees.",
-            "level2": "What method should be used to dequeue the next node in a FIFO manner?",
-            "level3": "In a breadth-first traversal, using deque's popleft() ensures that nodes are processed in the order they were added."
-        },
-        "knowledge_point": "Tree traversal with appropriate data structures"
-    },
-    {
-        "id": "datastructure_hard2",
-        "category": "DataStructure",
-        "text": """# Linked List Reversal (Hard)
-def reverse_linked_list(head):
-    prev = None
-    curr = head
-    while curr:
-        next_node = curr.next
-        curr.next = prev
-        prev = curr
-        curr = next #This line has a problem
-    return prev
-
-# Test Input: Linked list with nodes 1->2->3->4->5
-# Expected Output: Reversed linked list 5->4->3->2->1""",
-        "answer": """curr = next_node""",
-        "hints": {
-            "level1": "Review linked list reversal.",
-            "level2": "What variable should be used to progress through the linked list after reassigning pointers?",
-            "level3": "After storing the next node in a temporary variable, you must update the current pointer to that saved variable (next_node) to continue the reversal."
-        },
-        "knowledge_point": "Linked list traversal and reversal"
-    },
-    {
-        "id": "datastructure_hard3",
-        "category": "DataStructure",
-        "text": """# Selection Sort Implementation (Hard)
-def selection_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        min_idx = i
-        for j in range(i+1, n):
-            if arr[j] < arr[min_idx]:
-                min_idx = j
-        arr[i] = arr[min_idx]  # This line has a problem : Incorrect swap
-        arr[min_idx] = arr[i]
-    return arr
-
-# Test Input: [64, 25, 12, 22, 11]
-# Expected Output: [11, 12, 22, 25, 64]""",
-        "answer": """arr[i], arr[min_idx] = arr[min_idx], arr[i]""",
-        "hints": {
-            "level1": "Review selection sort swapping.",
-            "level2": "How can you swap two elements in a list in Python in a single statement?",
-            "level3": "Using Python's tuple assignment (a, b = b, a) swaps the values without needing a temporary variable, making the code concise and error-free."
-        },
-        "knowledge_point": "Array swapping and sorting algorithms"
-    }
-])
+# question_bank[0].extend([
+#     {
+#         "id": "operator_easy1",
+#         "category": "OperatorPrecedence",
+#         "text": """# Simple Operator Precedence (Easy)
+# result = 5 + 2 * 3 # This line has a problem
+# print(result)
+# # Expected Output: 21""",
+#         "answer": """result = (5 + 2) * 3""",
+#         "hints": {
+#             "level1": "Check operator precedence.",
+#             "level2": "What is the natural order of operations in Python for addition and multiplication?",
+#             "level3": "Multiplication is performed before addition in Python's operator precedence rules. Using parentheses can clarify the intended order of operations."
+#         },
+#         "knowledge_point": "Basic operator precedence rules"
+#     }
+# ])
+
+# # --- Medium level operator precedence problems ---
+# question_bank[1].extend([
+#     {
+#         "id": "operator_medium1",
+#         "category": "OperatorPrecedence",
+#         "text": """# Multiple Operations (Medium)
+# x = 10
+# y = 5
+# z = 2
+# result = x + y * z ** 2 # This line has a problem
+# print(result)
+# # Expected Output: 30""",
+#         "answer": """result = x + (y * (z ** 2))""",
+#         "hints": {
+#             "level1": "Review operator precedence.",
+#             "level2": "How are exponentiation, multiplication, and addition prioritized in Python?",
+#             "level3": "Python evaluates exponentiation (**) first, then multiplication, and finally addition. Parentheses help enforce the intended order of operations."
+#         },
+#         "knowledge_point": "Complex operator precedence"
+#     }
+# ])
+
+# # --- Hard level operator precedence problems ---
+# question_bank[2].extend([
+#     {
+#         "id": "operator_hard1",
+#         "category": "OperatorPrecedence",
+#         "text": """# Complex Operations with Mixed Types (Hard)
+# a = "5"
+# b = 2
+# c = "3"
+# result = a + b * c # This line has a problem
+# # Expected Output: 11 (as integer)""",
+#         "answer": """result = int(a) + (b * int(c))""",
+#         "hints": {
+#             "level1": "Check mixed type operations.",
+#             "level2": "How can you ensure that string values are correctly used in arithmetic expressions?",
+#             "level3": "Convert the string values to integers before performing arithmetic operations to ensure proper operator precedence is applied."
+#         },
+#         "knowledge_point": "Mixed type conversion and operator precedence"
+#     }
+# ])
+
+# # ====================== Control Flow Problems ======================
+
+# # --- Easy level control flow problems ---
+# question_bank[0].extend([
+#     {
+#         "id": "controlflow_easy1",
+#         "category": "ControlFlow",
+#         "text": """# Problem: Simple if-else condition
+# def check_score(score):
+#     if score >= 90:
+#         print("A")
+#     if score >= 80:  # This line has a problem
+#         print("B")
+#     if score >= 70:
+#         print("C")
+#     else:
+#         print("F")
+
+# # Test Input: score = 85
+# # Expected Output: B
+# # Actual Output: B C""",
+#         "answer": """elif score >= 80:""",
+#         "hints": {
+#             "level1": "Review if-elif-else structure.",
+#             "level2": "What change is needed to prevent multiple conditions from triggering in a chain of if statements?",
+#             "level3": "Using 'elif' ensures that once a condition is met, the remaining conditions are skipped, thereby preventing multiple outputs."
+#         },
+#         "knowledge_point": "if-elif-else chain"
+#     },
+#     {
+#         "id": "controlflow_easy2",
+#         "category": "ControlFlow",
+#         "text": """# Problem: Basic for loop
+# def sum_even_numbers(numbers):
+#     total = 0
+#     for num in numbers:
+#         if num % 2:  # This line has a problem
+#             total += num
+#     return total
+
+# # Test Input: [1, 2, 3, 4, 5, 6]
+# # Expected Output: 12 (2 + 4 + 6)
+# # Actual Output: 9 (1 + 3 + 5)""",
+#         "answer": """if num % 2 == 0:""",
+#         "hints": {
+#             "level1": "Review modulus operation for even numbers.",
+#             "level2": "How do you correctly check if a number is even using the modulus operator?",
+#             "level3": "The condition 'num % 2 == 0' evaluates to True when a number is even, ensuring that only even numbers are summed."
+#         },
+#         "knowledge_point": "Condition for even numbers"
+#     }
+# ])
+
+# # --- Medium level control flow problems ---
+# question_bank[1].extend([
+
+#     {
+#         "id": "controlflow_medium2",
+#         "category": "ControlFlow",
+#         "text": """# Problem: Try-except with multiple exceptions
+# def divide_and_convert(a, b):
+#     try:
+#         result = a / b
+#         return int(result)
+#     except:  # This line has a problem: Too broad exception clause
+#         return "Error"
+
+# # Test Input 1: a=5, b=0
+# # Test Input 2: a=5.5, b=2
+# # Expected Output 1: "Division by zero"
+# # Expected Output 2: 2""",
+#         "answer": """except ZeroDivisionError:
+#         return "Division by zero"
+#     except ValueError:
+#         return "Conversion error\"""",
+#         "hints": {
+#             "level1": "Review exception handling.",
+#             "level2": "Why should exceptions be handled specifically rather than using a bare except?",
+#             "level3": "Handling specific exceptions, such as ZeroDivisionError and ValueError, provides more precise error handling and prevents unintended error catching."
+#         },
+#         "knowledge_point": "Exception handling specificity"
+#     }
+# ])
+
+# # --- Hard level control flow problems ---
+# question_bank[2].extend([
+#     {
+#         "id": "controlflow_hard1",
+#         "category": "ControlFlow",
+#         "text": """# Problem: Complex nested control flow
+# def process_data(data_list):
+#     results = []
+#     try:
+#         for item in data_list:
+#             if not isinstance(item, dict):
+#                 continue
+
+#             if item.get('status') = 'active':  # This line has a problem
+#                 if item.get('value', 0) > 100
+#                     results.append(item):
+
+#     except TypeError as e:
+#         return f"Error processing data: {str(e)}"
+
+#     return sorted(results, key=lambda x: x['value'])
+
+# # Test Input: [
+# #     {'status': 'active', 'value': 150},
+# #     {'status': 'inactive', 'value': 200},
+# #     {'status': 'active', 'value': 120},
+# #     'invalid_item'
+# # ]
+# # Expected Output: [
+# #     {'status': 'active', 'value': 120},
+# #     {'status': 'active', 'value': 150}
+# # ]""",
+#         "answer": """if item.get('status') == 'active':""",
+#         "hints": {
+#             "level1": "Review nested condition syntax.",
+#             "level2": "What corrections are necessary for proper condition checking in nested structures?",
+#             "level3": "The error stems from using assignment '=' instead of comparison '==' in conditionals and missing colons after if statements. Correct syntax is essential for proper flow control."
+#         },
+#         "knowledge_point": "Nested conditions, error handling, and type checking"
+#     },
+#     {
+#         "id": "controlflow_hard2",
+#         "category": "ControlFlow",
+#         "text": """# Problem: State machine implementation
+# def process_workflow(tasks):
+#     current_state = 'START'
+#     processed = []
+
+#     while tasks:
+#         task = tasks.pop[0]  # This line has a problem
+
+#         if current_state in 'START':
+#             next_state = task.get('type', 'INVALID')
+#         elif current_state == 'PROCESSING'
+#             if task['status'] = 'complete':
+#                 next_state = 'COMPLETED'
+#                 processed.append(task)
+
+#         current_state = next_state
+
+#     return processed
+
+# # Test Input: [
+# #     {'type': 'PROCESSING', 'status': 'pending'},
+# #     {'type': 'PROCESSING', 'status': 'complete'},
+# #     {'type': 'COMPLETED', 'status': 'done'}
+# # ]
+# # Expected Output: [{'type': 'PROCESSING', 'status': 'complete'}]""",
+#         "answer": """task = tasks.pop(0)""",
+#         "hints": {
+#             "level1": "Review list method usage.",
+#             "level2": "How can you correctly call a method to pop the first element of a list?",
+#             "level3": "Using 'pop(0)' instead of pop[0] is necessary to properly remove and return the first element from the list. Also, ensure comparisons use '==' rather than '='."
+#         },
+#         "knowledge_point": "State machines, method calls, and condition checking"
+#     }
+# ])
+
+# # ====================== Exception Handling Problems ======================
+
+# # --- Easy level exception handling problems ---
+# question_bank[0].extend([
+
+#     {
+#         "id": "exception_easy2",
+#         "category": "Exception",
+#         "text": """# Problem: Missing exception variable
+# def convert_to_int(text):
+#     try:
+#         number = int(text)
+#         return number
+#     except ValueError as:  #This line has a problem
+#         print("Conversion failed")
+#         return None
+
+# # Test Input: "abc"
+# # Expected Output: "Conversion failed\"""",
+#         "answer": """except ValueError as e:""",
+#         "hints": {
+#             "level1": "Check exception syntax.",
+#             "level2": "Why is it important to bind the exception to a variable in an except clause?",
+#             "level3": "Binding the exception to a variable using 'as e' allows you to access the exception details, which aids in debugging and logging."
+#         },
+#         "knowledge_point": "Exception variable syntax"
+#     }
+# ])
+
+# # --- Medium level exception handling problems ---
+# question_bank[1].extend([
+
+#     {
+#         "id": "exception_medium2",
+#         "category": "Exception",
+#         "text": """# Problem: Exception in context manager
+# def read_file(filename):
+#     try:
+#         with open(filename, 'r') as file:
+#             data = file.read()
+#             return data
+#     except FileNotFoundError:
+#         raise  # Error: Bare raise without context
+#     finally:
+#         file.close()  # Error: File already closed by context manager
+
+# # Test Input: "nonexistent.txt"
+# # Expected Output: FileNotFoundError with proper context""",
+#         "answer": """except FileNotFoundError as e:
+#         raise FileNotFoundError(f"Could not find file: {filename}") from e""",
+#         "hints": {
+#             "level1": "Review file handling with exceptions.",
+#             "level2": "What is the effect of manually closing a file when using a context manager?",
+#             "level3": "When using a 'with' statement, the file is automatically closed after the block is executed. Manually closing the file can cause errors, so it's best to let the context manager handle it."
+#         },
+#         "knowledge_point": "Context managers and exception propagation"
+#     }
+# ])
+
+# # --- Hard level exception handling problems ---
+# question_bank[2].extend([
+
+
+# ])
+
+# # ====================== File I/O Problems ======================
+
+# # --- Easy level file I/O problems ---
+# question_bank[0].extend([
+#     {
+#         "id": "fileio_easy1",
+#         "category": "FileIO",
+#         "text": """# Problem: Basic file reading
+# file = open('data.txt')  # This line has a problem: No file mode specified
+# content = file.read()
+# file.close()
+
+# # Test Case: Reading from 'data.txt'
+# # Expected Output: Content of file""",
+#         "answer": """file = open('data.txt', 'r')""",
+#         "hints": {
+#             "level1": "Review file opening modes.",
+#             "level2": "What mode should be specified when you intend to read a file?",
+#             "level3": "When opening a file for reading, you must use the 'r' mode to indicate that the file is being read, which prevents unintended write operations."
+#         },
+#         "knowledge_point": "File opening modes"
+#     },
+
+# ])
+
+# # --- Medium level file I/O problems ---
+# question_bank[1].extend([
+#     {
+#         "id": "fileio_medium1",
+#         "category": "FileIO",
+#         "text": """# Problem: CSV file processing
+# def process_csv(filename):
+#     with open(filename, 'r') as file:
+#         header = file.readline()
+#         for line in file:
+#             fields = line.split(',')  # This line has a problem: Not handling newline characters
+#             data = {
+#                 'name': fields[0],
+#                 'age': fields[1],
+#                 'city': fields[2]
+#             }
+#             process_record(data)
+
+# # Test Case: CSV file with 'name,age,city\\nJohn,25,NY\\n'
+# # Expected Output: Processed data without \\n""",
+#         "answer": """fields = line.strip().split(',')""",
+#         "hints": {
+#             "level1": "Review CSV file processing.",
+#             "level2": "How can you ensure that newline characters do not affect field values when processing CSV data?",
+#             "level3": "Using the strip() method removes newline characters from each line, allowing you to accurately split the CSV fields."
+#         },
+#         "knowledge_point": "CSV line processing"
+#     },
+#     {
+#         "id": "fileio_medium2",
+#         "category": "FileIO",
+#         "text": """# Problem: File appending with error handling
+# def append_log(filename, message):
+#     try:
+#         file = open(filename, 'a')
+#         file.write(message)
+#     except IOError:
+#         print("Error writing to file")
+#     finally:
+#         file.close()  # Error: file might not be defined
+
+# # Test Case: append_log('log.txt', 'New message')
+# # Expected Output: Appended message or error handling""",
+#         "answer": """file = None
+#     try:""",
+#         "hints": {
+#             "level1": "Review exception handling with file operations.",
+#             "level2": "How can you ensure that the file variable is defined even if an error occurs during file opening?",
+#             "level3": "Initializing the file variable before the try block prevents reference errors in the finally block, ensuring that file.close() is only called if the file was successfully opened."
+#         },
+#         "knowledge_point": "Exception handling with files"
+#     }
+# ])
+
+# # --- Hard level file I/O problems ---
+# question_bank[2].extend([
+#     {
+#         "id": "fileio_hard1",
+#         "category": "FileIO",
+#         "text": """# Problem: Binary file processing
+# def process_binary_file(filename):
+#     try:
+#         with open(filename, 'rb') as file  # This line has a problem
+#             header = file.read(4)
+#             size = int.from_bytes(header)
+
+#             data = file.read(size)
+#             return process_data(data)
+#     except IOError as e:
+#         print(f"Error processing file: {e}")
+#         return None
+
+# # Test Case: Binary file with 4-byte header indicating data size
+# # Expected Output: Processed binary data""",
+#         "answer": """with open(filename, 'rb') as file:""",
+#         "hints": {
+#             "level1": "Review binary file processing.",
+#             "level2": "What syntax is required when opening a file in binary mode?",
+#             "level3": "Using 'with open(filename, 'rb') as file:' ensures that the file is opened in binary mode, and proper conversion methods (like int.from_bytes) must be used to convert binary data."
+#         },
+#         "knowledge_point": "Binary file handling and byte conversion"
+#     },
+#     {
+#         "id": "fileio_hard2",
+#         "category": "FileIO",
+#         "text": """# Problem: Multi-file processing with locks
+# import fcntl
+
+# def process_multiple_files(input_files, output_file):
+#     output = open(output_file, 'w')  # This line has a problem: No context management
+
+#     for file in input_files
+#         try:
+#             with open(file, 'r') as f:
+#                 fcntl.flock(f, fcntl.LOCK_EX)
+#                 content = f.readlines
+#                 process_and_write(content, output)
+#         finally:
+#             fcntl.flock(f, fcntl.LOCK_UN)
+
+# # Test Case: Multiple input files to be processed and combined
+# # Expected Output: Combined processed content in output file""",
+#         "answer": """with open(output_file, 'w') as output:""",
+#         "hints": {
+#             "level1": "Review file locking and context management.",
+#             "level2": "How can you use context managers to ensure files are properly managed when processing multiple files?",
+#             "level3": "Using a context manager (the 'with' statement) ensures that files are properly opened and closed, and that methods are called with the correct syntax."
+#         },
+#         "knowledge_point": "File locking and resource management"
+#     }
+# ])
+
+# # ====================== Function Problems ======================
+
+# # --- Easy level function problems ---
+# question_bank[0].extend([
+#     {
+#         "id": "function_easy1",
+#         "category": "Function",
+#         "text": """# Problem: Basic function definition
+# def calculate_average(numbers) # This line has a problem
+#     total = sum(numbers)
+#     return total/len(numbers)
+
+# # Test Input: [1, 2, 3, 4, 5]
+# # Expected Output: 3.0""",
+#         "answer": """def calculate_average(numbers):""",
+#         "hints": {
+#             "level1": "Check function definition syntax.",
+#             "level2": "What punctuation does a function definition in Python require at the end of its header?",
+#             "level3": "Every Python function definition must end with a colon, indicating the start of the function body. Omitting the colon results in a SyntaxError."
+#         },
+#         "knowledge_point": "Function definition syntax"
+#     },
+#     {
+#         "id": "function_easy2",
+#         "category": "Function",
+#         "text": """# Problem: Function parameter usage
+# def greet(name, greeting)  # This line has a problem
+#     print(greeting + " " + name)
+
+# # Test Input: greet("John")
+# # Expected Output: "Hello John\"""",
+#         "answer": """def greet(name, greeting="Hello"):""",
+#         "hints": {
+#             "level1": "Review function parameters.",
+#             "level2": "How can you define a function that provides a default value for a parameter?",
+#             "level3": "Setting a default value (e.g., greeting='Hello') in the function definition ensures that if the argument is omitted, the function still has a valid value to use."
+#         },
+#         "knowledge_point": "Default parameters"
+#     }
+# ])
+
+# # --- Medium level function problems ---
+# question_bank[1].extend([
+#     {
+#         "id": "function_medium1",
+#         "category": "Function",
+#         "text": """# Problem: Function arguments handling
+# def process_user_data(user_id, name, email, age):
+#     data = {
+#         'id': user_id # This line has a problem
+#         'name': name,
+#         'email': email,
+#         'age': age if type(age) == int else 0
+#     }
+#     return data
+
+# # Test Input: process_user_data(1, "John", "john@email.com", "25")
+# # Expected Output: {'id': 1, 'name': 'John', 'email': 'john@email.com', 'age': 25}""",
+#         "answer": """'id': user_id,""",
+#         "hints": {
+#             "level1": "Review dictionary creation and type checking.",
+#             "level2": "What is the correct way to iterate over a dictionary's items and check the type of a variable?",
+#             "level3": "Using .items() to iterate over a dictionary and isinstance() for type checking ensures that you process each key-value pair correctly and handle type conversions appropriately."
+#         },
+#         "knowledge_point": "Type checking and data processing"
+#     },
+#     {
+#         "id": "function_medium2",
+#         "category": "Function",
+#         "text": """# Problem: Function with *args
+# def calculate_total(*args, tax_rate):  # This line has a problem: Non-default argument follows default argument
+#     subtotal = sum(args)
+#     return subtotal * (1 + tax_rate)
+
+# # Test Input: calculate_total(10, 20, 30, tax_rate=0.1)
+# # Expected Output: 66.0""",
+#         "answer": """def calculate_total(tax_rate, *args):""",
+#         "hints": {
+#             "level1": "Review function parameter ordering.",
+#             "level2": "How should parameters be ordered when using *args along with non-default parameters?",
+#             "level3": "In Python, non-default parameters must come before *args to avoid ambiguity and ensure that all arguments are passed correctly to the function."
+#         },
+#         "knowledge_point": "Variable arguments and keyword arguments"
+#     }
+# ])
+
+# # --- Hard level function problems ---
+# question_bank[2].extend([
+
+#     {
+#         "id": "function_hard2",
+#         "category": "Function",
+#         "text": """# Problem: Decorator function implementation
+# def validate_input(func)  # Error 1: Missing colon
+#     def wrapper(*args, **kwargs)  # Error 2: Missing colon
+#         if len(args) = 0:  # Error 3: Assignment instead of comparison
+#             raise ValueError("No arguments provided")
+#         return func(*args, **kwargs)
+#     return wrapper
+
+# @validate_input
+# def process_numbers(numbers):
+#     return sum(numbers)
+
+# # Test Input: process_numbers([1, 2, 3])
+# # Expected Output: 6""",
+#         "answer": """def validate_input(func):""",
+#         "hints": {
+#             "level1": "Review decorator syntax.",
+#             "level2": "What changes are necessary to correctly define a decorator function?",
+#             "level3": "The decorator function should have proper parentheses and colons, and the condition should use '==' for comparison, not '='."
+#         },
+#         "knowledge_point": "Decorator syntax and function wrapping"
+#     }
+# ])
+
+# # ====================== List Problems ======================
+
+# # --- Easy level list problems ---
+# question_bank[0].extend([
+#     {
+#         "id": "list_easy1",
+#         "category": "List",
+#         "text": """# Problem: Basic list appending
+# numbers = [1, 2, 3, 4]
+# numbers.append([5, 6])  # This line has a problem: Appending list instead of elements
+
+# # Test Input: numbers = [1, 2, 3, 4]
+# # Expected Output: [1, 2, 3, 4, 5, 6]""",
+#         "answer": """numbers.extend([5, 6])""",
+#         "hints": {
+#             "level1": "Review list methods.",
+#             "level2": "What is the difference between append and extend when adding elements to a list?",
+#             "level3": "append() adds its argument as a single element, while extend() iterates over its argument and adds each element individually."
+#         },
+#         "knowledge_point": "List methods append vs extend"
+#     },
+#     {
+#         "id": "list_easy2",
+#         "category": "List",
+#         "text": """# Problem: List slicing
+# fruits = ['apple', 'banana', 'cherry', 'date']
+# last_two = fruits[-2, -1]  # This line has a problem: Incorrect slice syntax
+
+# # Test Input: fruits = ['apple', 'banana', 'cherry', 'date']
+# # Expected Output: ['cherry', 'date']""",
+#         "answer": """last_two = fruits[-2:]""",
+#         "hints": {
+#             "level1": "Review list slicing syntax.",
+#             "level2": "How do you correctly slice a list to obtain the last two elements?",
+#             "level3": "Using 'fruits[-2:]' slices the list from the second-to-last element to the end, returning the last two elements."
+#         },
+#         "knowledge_point": "List slicing syntax"
+#     }
+# ])
+
+# # --- Medium level list problems ---
+# question_bank[1].extend([
+#     {
+#         "id": "list_medium1",
+#         "category": "List",
+#         "text": """# Problem: List comprehension with filtering
+# def filter_process_numbers(numbers):
+#     results = [num // 2 if num % 2 == 0 for num in numbers] # This line has a problem: Incorrect list comprehension logic
+
+#     positive_nums = [n for n in results if n > 0]
+#     return sorted(positive_nums)
+
+# # Test Input: [1, 2, 3, 4, 5, 6, 7, 8]
+# # Expected Output: [1, 2, 3, 4]""",
+#         "answer": """results = [num // 2 for num in numbers if num % 2 == 0]""",
+#         "hints": {
+#             "level1": "Review list comprehension syntax.",
+#             "level2": "How can you include a condition within a list comprehension?",
+#             "level3": "By placing the condition after the iteration variable (e.g. 'for num in numbers if num % 2 == 0'), you filter the elements directly in the comprehension."
+#         },
+#         "knowledge_point": "List comprehension with conditional logic"
+#     },
+
+# ])
+
+# # --- Hard level list problems ---
+# question_bank[2].extend([
+#     {
+#         "id": "list_hard1",
+#         "category": "List",
+#         "text": """# Problem: Complex list processing with multiple operations
+# def process_student_scores(student_data):
+#     scores = {student['name']: student['scores'] for student in student_data} # This line has a problem :Incorrect list comprehension logic
+#     averages = [sum(scores) / len(scores) for scores in scores.items()]
+#     ranked_students = sorted(averages, key=lambda x: x[1], reversed=True)
+
+#     return ranked_students[:3]  # Return top 3 students
+
+# # Test Input: [
+# #     {'name': 'John', 'scores': [85, 90, 78]},
+# #     {'name': 'Alice', 'scores': [92, 88, 95]},
+# #     {'name': 'Bob', 'scores': [76, 85, 82]}
+# # ]
+# # Expected Output: [('Alice', 91.67), ('John', 84.33), ('Bob', 81.00)]""",
+#         "answer": """scores = {s['name']: sum(s['scores'])/len(s['scores']) for s in student_data}""",
+#         "hints": {
+#             "level1": "Review dictionary and list comprehension.",
+#             "level2": "How can you compute averages using a dictionary comprehension?",
+#             "level3": "By iterating over the list of students and calculating the average of scores using sum() and len(), you can create a dictionary mapping student names to their average scores."
+#         },
+#         "knowledge_point": "Dictionary comprehension, list operations, and sorting"
+#     },
+
+# ])
+
+# # ====================== Algorithm Problems ======================
+
+# question_bank[2].extend([
+#     {
+#         "id": "algorithm_hard1",
+#         "category": "Algorithm",
+#         "text": """# Binary Search Variations (Hard)
+# def binary_search(arr, low, high, x):
+#     if high >= low:
+#         mid = (low + high) // 2
+#         if arr[mid] > x: # This line has a problem
+#             return mid
+#         elif arr[mid] > x:
+#             return binary_search(arr, low, mid - 1, x)
+#         else:
+#             return binary_search(arr, mid + 1, high, x)
+#     return -1
+
+# # Test Input: arr = [1, 2, 3, 4, 5], x = 3
+# # Expected Output: 2 (index of x in arr)""",
+#         "answer": """if arr[mid] == x:""",
+#         "hints": {
+#             "level1": "Review binary search conditions.",
+#             "level2": "What condition should be checked to determine if the middle element equals the target?",
+#             "level3": "The condition should use 'if arr[mid] == x:' to verify equality, ensuring that the binary search works as expected."
+#         },
+#         "knowledge_point": "Binary search algorithm implementation"
+#     },
+
+#     {
+#         "id": "algorithm_hard3",
+#         "category": "Algorithm",
+#         "text": """# Graph Traversal - BFS (Hard)
+# def bfs(graph, start):
+#     visited = set()
+#     queue = [] # Error: Should use deque()
+#     visited.add(start)
+#     queue.append(start)
+#     while queue:
+#         vertex = queue.pop(0)
+#         print(vertex, end=" ")
+#         for neighbor in graph[vertex]:
+#             if neighbor not in visited:
+#                 visited.add(neighbor)
+#                 queue.append(neighbor)
+
+# # Test Input: Simple graph with vertices 0-4
+# # Expected Output: BFS traversal starting from vertex 0""",
+#         "answer": """from collections import deque
+#     queue = deque()""",
+#         "hints": {
+#             "level1": "Review BFS queue implementation.",
+#             "level2": "Why might a deque be more efficient than a list for queue operations in BFS?",
+#             "level3": "A deque provides O(1) time complexity for popping elements from the left, making it more efficient for breadth-first search than a list."
+#         },
+#         "knowledge_point": "BFS graph traversal with efficient data structures"
+#     },
+#     {
+#         "id": "algorithm_hard4",
+#         "category": "Algorithm",
+#         "text": """# BFS Shortest Path (Hard)
+# def bfs_shortest_path(graph, start, end):
+#     visited = set()
+#     queue = deque()
+#     visited.add(start)
+#     queue.append((start, 0))
+#     while queue:
+#         vertex, distance = queue.popleft()
+#         if vertex == end:
+#             return distance
+#         for neighbor in graph[vertex]:
+#             if neighbor not in visited:
+#                 visited.add(neighbor)
+#                 queue.append((neighbor, distance)) # This line has a problem
+#     return -1
+
+# # Test Input: Graph with shortest path of length 2
+# # Expected Output: 2""",
+#         "answer": """queue.append((neighbor, distance + 1))""",
+#         "hints": {
+#             "level1": "Review BFS shortest path logic.",
+#             "level2": "What should be modified in the tuple added to the queue to correctly track distance?",
+#             "level3": "When adding neighbors to the queue, the distance should be incremented (i.e., distance + 1) to correctly reflect the number of steps taken."
+#         },
+#         "knowledge_point": "BFS shortest path tracking"
+#     }
+# ])
+
+# # ====================== Data Structure Problems ======================
+
+# question_bank[2].extend([
+#     {
+#         "id": "datastructure_hard1",
+#         "category": "DataStructure",
+#         "text": """# Binary Tree Level Order Traversal (Hard)
+# def level_order_traversal(root):
+#     if not root:
+#         return []
+#     queue = deque([root])
+#     result = []
+#     while queue:
+#         node = queue.pop() # This line has a problem
+#         result.append(node.val)
+#         if node.left:
+#             queue.append(node.left)
+#         if node.right:
+#             queue.append(node.right)
+#     return result
+
+# # Test Input: Binary tree with 7 nodes
+# # Expected Output: Level order traversal result""",
+#         "answer": """node = queue.popleft()""",
+#         "hints": {
+#             "level1": "Review BFS traversal in trees.",
+#             "level2": "What method should be used to dequeue the next node in a FIFO manner?",
+#             "level3": "In a breadth-first traversal, using deque's popleft() ensures that nodes are processed in the order they were added."
+#         },
+#         "knowledge_point": "Tree traversal with appropriate data structures"
+#     },
+#     {
+#         "id": "datastructure_hard2",
+#         "category": "DataStructure",
+#         "text": """# Linked List Reversal (Hard)
+# def reverse_linked_list(head):
+#     prev = None
+#     curr = head
+#     while curr:
+#         next_node = curr.next
+#         curr.next = prev
+#         prev = curr
+#         curr = next #This line has a problem
+#     return prev
+
+# # Test Input: Linked list with nodes 1->2->3->4->5
+# # Expected Output: Reversed linked list 5->4->3->2->1""",
+#         "answer": """curr = next_node""",
+#         "hints": {
+#             "level1": "Review linked list reversal.",
+#             "level2": "What variable should be used to progress through the linked list after reassigning pointers?",
+#             "level3": "After storing the next node in a temporary variable, you must update the current pointer to that saved variable (next_node) to continue the reversal."
+#         },
+#         "knowledge_point": "Linked list traversal and reversal"
+#     },
+#     {
+#         "id": "datastructure_hard3",
+#         "category": "DataStructure",
+#         "text": """# Selection Sort Implementation (Hard)
+# def selection_sort(arr):
+#     n = len(arr)
+#     for i in range(n):
+#         min_idx = i
+#         for j in range(i+1, n):
+#             if arr[j] < arr[min_idx]:
+#                 min_idx = j
+#         arr[i] = arr[min_idx]  # This line has a problem : Incorrect swap
+#         arr[min_idx] = arr[i]
+#     return arr
+
+# # Test Input: [64, 25, 12, 22, 11]
+# # Expected Output: [11, 12, 22, 25, 64]""",
+#         "answer": """arr[i], arr[min_idx] = arr[min_idx], arr[i]""",
+#         "hints": {
+#             "level1": "Review selection sort swapping.",
+#             "level2": "How can you swap two elements in a list in Python in a single statement?",
+#             "level3": "Using Python's tuple assignment (a, b = b, a) swaps the values without needing a temporary variable, making the code concise and error-free."
+#         },
+#         "knowledge_point": "Array swapping and sorting algorithms"
+#     }
+# ])
 
 # ====================== Summary Output ======================
 
